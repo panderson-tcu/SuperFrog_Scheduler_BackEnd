@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beb9d9d9-46ae-4ad0-8de0-930c0db0b5a5" name="Changes" comment="" />
+    <list default="true" id="beb9d9d9-46ae-4ad0-8de0-930c0db0b5a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +29,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
@@ -39,6 +43,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/paigeanderson/IdeaProjects/SuperFrog_Scheduler_BackEnd/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/system",
     "node.js.detected.package.eslint": "true",
@@ -46,6 +51,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -54,7 +62,39 @@
       <recent name="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/system" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess">
+    <configuration name="SuperFrogStudentControllerTest.testFindSFSByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentControllerTest" />
+      <option name="METHOD_NAME" value="testFindSFSByIdSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SuperFrogStudentServiceTest.testFindByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentServiceTest" />
+      <option name="METHOD_NAME" value="testFindByIdSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SuperfrogSchedulerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="edu.tcu.cs.superfrogscheduler.SuperfrogSchedulerApplication" />
@@ -62,6 +102,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess" />
+        <item itemvalue="JUnit.SuperFrogStudentServiceTest.testFindByIdSuccess" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -71,7 +117,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680562653371</updated>
-      <workItem from="1680562657120" duration="2845000" />
+      <workItem from="1680562657120" duration="11969000" />
     </task>
     <servers />
   </component>
