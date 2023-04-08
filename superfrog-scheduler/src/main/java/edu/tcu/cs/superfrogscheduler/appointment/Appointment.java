@@ -1,30 +1,30 @@
-package edu.tcu.cs.superfrogscheduler.event;
+package edu.tcu.cs.superfrogscheduler.appointment;
 
 import edu.tcu.cs.superfrogscheduler.customer.Customer;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
-public class Event implements Serializable{
+public class Appointment implements Serializable{
     @Id
     private String E_id;
 
     private String eventTitle;
 
-    private LocalDate eventDate;
+    @Column(name = "start")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime startTime;
 
-    private LocalTime startTime;
-
-    private LocalTime endTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @Column(name = "end")
+    private LocalDateTime endTime;
 
     private String eventType;
 
@@ -32,7 +32,9 @@ public class Event implements Serializable{
 
     private String eventAddress;
 
-    private String onCampus;
+    private Boolean onCampus;
+
+
 
     private String specialInstructions;
 
@@ -42,7 +44,9 @@ public class Event implements Serializable{
 
     private String eventDescription;
 
-    private String approvedStatus; // pending, approved, or denied
+    //private String approvedStatus; // pending, approved, or denied
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status;
 
     @ManyToOne
     private SuperFrogStudent superFrogStudent;
@@ -50,8 +54,6 @@ public class Event implements Serializable{
     @ManyToOne
     private Customer customer;
 
-    public Event() {
-    }
 
     public String getE_id() {
         return E_id;
@@ -69,27 +71,19 @@ public class Event implements Serializable{
         this.eventTitle = eventTitle;
     }
 
-    public LocalDate getEventDate() {
-        return eventDate;
-    }
-
-    public void setEventDate(LocalDate eventDate) {
-        this.eventDate = eventDate;
-    }
-
-    public LocalTime getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalTime getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalTime endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -117,13 +111,14 @@ public class Event implements Serializable{
         this.eventAddress = eventAddress;
     }
 
-    public String getOnCampus() {
+    public void setOnCampus(Boolean onCampus) {
+        this.onCampus = onCampus;
+    }
+    public Boolean getOnCampus() {
         return onCampus;
     }
 
-    public void setOnCampus(String onCampus) {
-        this.onCampus = onCampus;
-    }
+
 
     public String getSpecialInstructions() {
         return specialInstructions;
@@ -157,19 +152,11 @@ public class Event implements Serializable{
         this.eventDescription = eventDescription;
     }
 
-    public SuperFrogStudent getSuperFrogStudent() {
-        return superFrogStudent;
+    public AppointmentStatus getStatus() {
+        return status;
     }
 
-    public void setSuperFrogStudent(SuperFrogStudent superFrogStudent) {
-        this.superFrogStudent = superFrogStudent;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setStatus(AppointmentStatus status) {
+        this.status = status;
     }
 }
