@@ -1,5 +1,6 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
+
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
 import jakarta.persistence.Entity;
@@ -101,6 +102,5 @@ public class SuperFrogStudent implements Serializable {
     }
 
     private PaymentEnum paymentPreference;
-
 
 }
