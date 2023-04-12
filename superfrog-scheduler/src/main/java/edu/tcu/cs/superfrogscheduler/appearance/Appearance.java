@@ -1,4 +1,4 @@
-package edu.tcu.cs.superfrogscheduler.appointment;
+package edu.tcu.cs.superfrogscheduler.appearance;
 
 import edu.tcu.cs.superfrogscheduler.customer.Customer;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
@@ -8,11 +8,10 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class Appointment implements Serializable{
+public class Appearance implements Serializable{
     @Id
     private String E_id;
 
@@ -46,7 +45,7 @@ public class Appointment implements Serializable{
 
     //private String approvedStatus; // pending, approved, or denied
     @Enumerated(EnumType.STRING)
-    private AppointmentStatus status;
+    private AppearanceStatus status;
 
     @ManyToOne
     private SuperFrogStudent superFrogStudent;
@@ -152,11 +151,11 @@ public class Appointment implements Serializable{
         this.eventDescription = eventDescription;
     }
 
-    public AppointmentStatus getStatus() {
+    public AppearanceStatus getStatus() {
         return status;
     }
 
-    public void setStatus(AppointmentStatus status) {
+    public void setStatus(AppearanceStatus status) {
         this.status = status;
     }
 }

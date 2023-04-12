@@ -1,6 +1,6 @@
-package edu.tcu.cs.superfrogscheduler.appointment;
+package edu.tcu.cs.superfrogscheduler.appearance;
 
-public enum AppointmentStatus {
+public enum AppearanceStatus {
     PENDING,
     APPROVED,
     REJECTED,

@@ -1,6 +1,6 @@
 package edu.tcu.cs.superfrogscheduler.customer;
 
-import edu.tcu.cs.superfrogscheduler.appointment.Appointment;
+import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -23,7 +23,7 @@ public class Customer implements Serializable{
     private String email;
 
     @OneToMany
-    private List <Appointment> eventsList;
+    private List <Appearance> eventsList;
 
     public Customer(){}
 
@@ -67,11 +67,11 @@ public class Customer implements Serializable{
         this.email = email;
     }
 
-    public List<Appointment> getEventsList() {
+    public List<Appearance> getEventsList() {
         return eventsList;
     }
 
-    public void setEventsList(List<Appointment> eventsList) {
+    public void setEventsList(List<Appearance> eventsList) {
         this.eventsList = eventsList;
     }
 }

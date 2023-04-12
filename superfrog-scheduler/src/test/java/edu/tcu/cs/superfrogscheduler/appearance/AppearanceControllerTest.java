@@ -1,8 +1,8 @@
-package edu.tcu.cs.superfrogscheduler.appointment;
+package edu.tcu.cs.superfrogscheduler.appearance;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
-import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentService;
+import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
+import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,35 +18,34 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class AppointmentControllerTest {
+class AppearanceControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    AppointmentService appointmentService;
+    AppearanceService appearanceService;
 
     @Autowired
     ObjectMapper objectMapper;
 
-    List<Appointment> appointments;
+    List<Appearance> appearances;
 
 
     @BeforeEach
     void setUp() {
-        this.appointments = new ArrayList<>();
+        this.appearances = new ArrayList<>();
 
         LocalDateTime mockStartTime = LocalDateTime.of(2023, 12, 23, 11, 0, 0);
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
 
-        Appointment a1 = new Appointment();
+        Appearance a1 = new Appearance();
         a1.setE_id("1");
         a1.setEventTitle("Boschini Birthday");
         a1.setStartTime(mockStartTime);
@@ -61,7 +60,7 @@ class AppointmentControllerTest {
         a1.setEventDescription("The annual millionare party organized by Boschini");
         a1.setStatus(null);
 
-        this.appointments.add(a1);
+        this.appearances.add(a1);
 
     }
 
@@ -70,15 +69,15 @@ class AppointmentControllerTest {
     }
 
     @Test
-    void testGetAppointmentByIdSuccess() throws Exception{
+    void testGetAppearanceByIdSuccess() throws Exception{
         // Given
-        given(this.appointmentService.getAppointmentById("1")).willReturn(this.appointments.get(0));
+        given(this.appearanceService.getAppearanceById("1")).willReturn(this.appearances.get(0));
 
         // When and then
-        this.mockMvc.perform(get("/api/v1/appointments/1").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/api/v1/appearances/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.flag").value(true))
                 .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
-                .andExpect(jsonPath("$.message").value("Find appointment Success"))
+                .andExpect(jsonPath("$.message").value("Find appearance Success"))
                 .andExpect(jsonPath("$.data.eventTitle").value("Boschini Birthday"));
 
     }
