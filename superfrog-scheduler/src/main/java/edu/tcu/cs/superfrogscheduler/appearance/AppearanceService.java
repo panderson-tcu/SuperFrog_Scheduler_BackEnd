@@ -17,8 +17,4 @@ public class AppearanceService {
         return this.appearanceRepository.findById(E_id).get();
     }
 
-//    public Appointment cancelAppointmentById(String E_id){
-//        return this.appointmentRepository.findById(E_id).get();
-//    }
-
 }
