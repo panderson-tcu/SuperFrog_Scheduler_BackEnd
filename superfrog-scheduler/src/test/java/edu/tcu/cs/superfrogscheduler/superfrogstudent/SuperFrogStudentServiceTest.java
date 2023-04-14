@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,6 +35,58 @@ class SuperFrogStudentServiceTest {
 
     @BeforeEach
     void setUp() {
+        SuperFrogStudent s1 = new SuperFrogStudent();
+        s1.setSFS_id("1");
+        s1.setFirstName("Hiep");
+        s1.setLastName("Nguyen");
+        s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
+        s1.setPhone("(682)-365-5307");
+        s1.setEmail("hiep.n.nguyen@tcu.edu");
+        s1.setInternational(Boolean.TRUE);
+
+        SuperFrogStudent s2 = new SuperFrogStudent();
+        s2.setSFS_id("2");
+        s2.setFirstName("Ryan");
+        s2.setLastName("Usell");
+        s2.setPhone("(123) 456-789");
+        s2.setEmail("dummy_email@gmail.com");
+        s2.setInternational(Boolean.FALSE);
+
+        SuperFrogStudent s3 = new SuperFrogStudent();
+        s3.setSFS_id("3");
+        s3.setFirstName("Paige");
+        s3.setLastName("Anderson");
+        s3.setPhone("(123) 456-789");
+        s3.setEmail("dummy_email@gmail.com");
+        s3.setInternational(Boolean.FALSE);
+
+        SuperFrogStudent s4 = new SuperFrogStudent();
+        s4.setSFS_id("4");
+        s4.setFirstName("Annalise");
+        s4.setLastName("Gadbois");
+        s4.setPhone("(123) 456-789");
+        s4.setEmail("dummy_email@gmail.com");
+        s4.setInternational(Boolean.FALSE);
+
+
+        SuperFrogStudent s5 = new SuperFrogStudent();
+        s5.setSFS_id("5");
+        s5.setFirstName("Danny");
+        s5.setLastName("Mairena Jarquin");
+        s5.setPhone("(123) 456-789");
+        s5.setEmail("dummy_email@gmail.com");
+        s5.setInternational(Boolean.TRUE);
+
+        SuperFrogStudent s6 = new SuperFrogStudent();
+        s6.setSFS_id("6");
+        s6.setFirstName("Hiep");
+        s6.setLastName("Nguyen");
+        s6.setPhone("(682) 365-5307");
+        s6.setEmail("hiep.n.nguyen@tcu.edu");
+        s6.setInternational(Boolean.FALSE);
+
+        this.students = new ArrayList<>();
+        this.students.add(s1);
     }
 
     @AfterEach
@@ -80,4 +133,32 @@ class SuperFrogStudentServiceTest {
         verify(studentRepository, times(1)).findById("1250808601744904191");
     }
 
+    @Test
+    void testFindSuperFrogStudentSuccess() {
+        //given
+        given(studentRepository.findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
+                "Hiep",
+                "Nguyen",
+                "(682) 365-5307",
+                "hiep.n.nguyen@tcu.edu"))
+                .willReturn(students);
+
+        //when
+        List<SuperFrogStudent> returnedStudentList = studentService.findSuperFrogStudent("Hiep", "Nguyen", "(682) 365-5307", "hiep.n.nguyen@tcu.edu");
+
+        //then
+        assertThat(returnedStudentList.size()).isEqualTo(students.size());
+
+        IntStream.range(0, students.size()).forEach(i -> {
+            assertThat(returnedStudentList.get(i).getFirstName()).isEqualTo(students.get(i).getFirstName());
+            assertThat(returnedStudentList.get(i).getLastName()).isEqualTo(students.get(i).getLastName());
+            assertThat(returnedStudentList.get(i).getEmail()).isEqualTo(students.get(i).getEmail());
+            assertThat(returnedStudentList.get(i).getPhone()).isEqualTo(students.get(i).getPhone());
+        });
+        verify(studentRepository, times(1)).findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
+                "Hiep",
+                "Nguyen",
+                "(682) 365-5307",
+                "hiep.n.nguyen@tcu.edu");
+    }
 }
