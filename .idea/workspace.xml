@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb9d9d9-46ae-4ad0-8de0-930c0db0b5a5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,34 +35,47 @@
     </option>
   </component>
   <component name="ProjectId" id="2Nw6AMsbEnSa8o3rAH6hfHEtPxo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/paigeanderson/IdeaProjects/SuperFrog_Scheduler_BackEnd/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/system",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/paigeanderson/IdeaProjects/SuperFrog_Scheduler_BackEnd/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5f3754e008dec80ca9266ed58d4d46d8&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/system" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="edu.tcu.cs.superfrogscheduler.appearance" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess">
+  <component name="RunManager" selected="JUnit.All in superfrog-scheduler">
+    <configuration name="All in superfrog-scheduler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SuperFrogStudentControllerTest.testFindSFSByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <extension name="coverage">
@@ -104,6 +117,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in superfrog-scheduler" />
         <item itemvalue="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess" />
         <item itemvalue="JUnit.SuperFrogStudentServiceTest.testFindByIdSuccess" />
       </list>
@@ -118,6 +132,10 @@
       <option name="presentableId" value="Default" />
       <updated>1680562653371</updated>
       <workItem from="1680562657120" duration="11969000" />
+      <workItem from="1681162420500" duration="2793000" />
+      <workItem from="1681235642437" duration="15186000" />
+      <workItem from="1681265076020" duration="432000" />
+      <workItem from="1681265519310" duration="721000" />
     </task>
     <servers />
   </component>
