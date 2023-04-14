@@ -26,6 +26,7 @@ public class SuperFrogStudent implements Serializable {
 
     private Boolean international;
 
+
     public SpiritDirector getDirector() {
         return director;
     }
