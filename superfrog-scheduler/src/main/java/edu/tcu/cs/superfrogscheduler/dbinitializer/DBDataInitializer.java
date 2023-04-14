@@ -1,7 +1,6 @@
 
 package edu.tcu.cs.superfrogscheduler.dbinitializer;
 
-import edu.tcu.cs.superfrogscheduler.appointment.AppointmentRepository;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
