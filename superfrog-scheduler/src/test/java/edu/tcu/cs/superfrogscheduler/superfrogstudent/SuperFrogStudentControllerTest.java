@@ -142,6 +142,12 @@ class SuperFrogStudentControllerTest {
                 .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
                 .andExpect(jsonPath("$.message").value("Find students success"))
                 .andExpect(jsonPath("$.data", Matchers.hasSize(this.students.size())))
-                .andExpect(jsonPath("$.data[0].firstName").value("Hiep"));
+                .andExpect(jsonPath("$.data[0].firstName").value("Hiep"))
+
+                .andExpect(jsonPath("$.data[0].lastName").value("Hiep"))
+
+
+
+        ;
     }
 }

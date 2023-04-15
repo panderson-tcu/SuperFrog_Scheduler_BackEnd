@@ -26,7 +26,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s1.setFirstName("Hiep");
         s1.setLastName("Nguyen");
         s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
-        s1.setPhone("(682)-365-5307");
+        s1.setPhone("(682) 365-5307");
         s1.setEmail("hiep.n.nguyen@tcu.edu");
         s1.setInternational(Boolean.TRUE);
 
@@ -62,6 +62,20 @@ public class DBDataInitializer implements CommandLineRunner {
         s5.setPhone("(123) 456-789");
         s5.setEmail("dummy_email@gmail.com");
         s5.setInternational(Boolean.TRUE);
+
+        SuperFrogStudent s6 = new SuperFrogStudent();
+        s6.setSFS_id("6");
+        s6.setFirstName("Hiep");
+        s6.setLastName("Nguyen");
+        s6.setPhone("(682) 365-5307");
+        s6.setEmail("hiep.n.nguyen@tcu.edu");
+        s6.setInternational(Boolean.FALSE);
+
+        studentRepositoryRepository.save(s1);
+        studentRepositoryRepository.save(s2);
+        studentRepositoryRepository.save(s3);
+        studentRepositoryRepository.save(s4);
+        studentRepositoryRepository.save(s5);
 
 
 

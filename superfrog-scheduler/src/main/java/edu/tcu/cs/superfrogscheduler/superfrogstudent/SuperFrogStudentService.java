@@ -1,7 +1,7 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
-import edu.tcu.cs.superfrogscheduler.system.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +11,11 @@ import java.util.List;
 public class SuperFrogStudentService {
     private final SuperFrogStudentRepository studentRepository;
 
-    public SuperFrogStudentService(SuperFrogStudentRepository studentRepository) {
+    private final SuperFrogStudentsSpecifications superFrogStudentsSpecifications;
+
+    public SuperFrogStudentService(SuperFrogStudentRepository studentRepository, SuperFrogStudentsSpecifications superFrogStudentsSpecifications) {
         this.studentRepository = studentRepository;
+        this.superFrogStudentsSpecifications = superFrogStudentsSpecifications;
     }
 
     public SuperFrogStudent findById(String SFS_id){
@@ -23,7 +26,10 @@ public class SuperFrogStudentService {
     //UC 15: Find a SuperFrog Student by criteria
     //Return a list of matching SuperFrog Students
     public List<SuperFrogStudent> findSuperFrogStudent(String firstName, String lastName, String phoneNumber, String email){
-        return this.studentRepository.findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(firstName, lastName, phoneNumber, email);
+        Specification<SuperFrogStudent> searchSpecification = superFrogStudentsSpecifications
+                .superFrogStudentFilters(firstName, lastName, phoneNumber, email);
+
+        return this.studentRepository.findAll(searchSpecification);
     }
 
 
