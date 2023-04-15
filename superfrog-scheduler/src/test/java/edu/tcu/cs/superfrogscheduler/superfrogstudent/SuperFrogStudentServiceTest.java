@@ -136,6 +136,7 @@ class SuperFrogStudentServiceTest {
     @Test
     void testFindSuperFrogStudentSuccess() {
         //given
+
         given(studentRepository.findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
                 "Hiep",
                 "Nguyen",
@@ -155,10 +156,13 @@ class SuperFrogStudentServiceTest {
             assertThat(returnedStudentList.get(i).getEmail()).isEqualTo(students.get(i).getEmail());
             assertThat(returnedStudentList.get(i).getPhone()).isEqualTo(students.get(i).getPhone());
         });
+
         verify(studentRepository, times(1)).findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
                 "Hiep",
                 "Nguyen",
                 "(682) 365-5307",
                 "hiep.n.nguyen@tcu.edu");
+
+
     }
 }
