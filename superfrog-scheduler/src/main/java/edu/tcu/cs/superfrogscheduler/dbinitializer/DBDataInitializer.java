@@ -1,12 +1,15 @@
 
 package edu.tcu.cs.superfrogscheduler.dbinitializer;
 
-import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
+import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
+import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 // make this as a Spring bean
 @Component
@@ -14,13 +17,18 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final SuperFrogStudentRepository studentRepositoryRepository;
 
+    private final AppearanceRepository appearanceRepository;
 
-    public DBDataInitializer(SuperFrogStudentRepository studentRepositoryRepository) {
+    public DBDataInitializer(SuperFrogStudentRepository studentRepositoryRepository, AppearanceRepository appearanceRepository) {
         this.studentRepositoryRepository = studentRepositoryRepository;
+        this.appearanceRepository = appearanceRepository;
     }
+
 
     @Override
     public void run(String... args) throws Exception {
+
+        //SFS
         SuperFrogStudent s1 = new SuperFrogStudent();
         s1.setSFS_id("1");
         s1.setFirstName("Hiep");
@@ -78,6 +86,33 @@ public class DBDataInitializer implements CommandLineRunner {
         studentRepositoryRepository.save(s5);
 
 
+        //Appearance requests
+
+
+        Appearance a1 = new Appearance();
+        a1.setE_id("1");
+        a1.setC_firstName("Hiep");
+        a1.setC_lastName("Nguyen");
+        a1.setC_email("hiep.n.nguyen@tcu.edu");
+        a1.setC_phone("(682) 365-5307");
+        a1.setEventTitle("Boschini Birthday");
+
+        //LocalDateTime mockStartTime = LocalDateTime.of(2023, 12, 23, 11, 0, 0);
+        //a1.setStart(mockStartTime);
+
+        //LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
+        //a1.setEnd(mockEndTime);
+        a1.setEventType("Private");
+        a1.setOrganizationName("Boschini Million Dollar Group");
+        a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
+        a1.setOnCampus(Boolean.FALSE);
+        a1.setSpecialInstructions(null);
+        a1.setExpenseBen(null);
+        a1.setOutsideOrganizations(null);
+        a1.setEventDescription("The annual millionaire party organized by Boschini");
+        a1.setStatus(null);
+
+        appearanceRepository.save(a1);
 
     }
 

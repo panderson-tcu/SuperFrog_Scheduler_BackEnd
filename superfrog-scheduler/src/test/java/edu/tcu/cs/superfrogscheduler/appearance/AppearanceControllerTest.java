@@ -48,8 +48,8 @@ class AppearanceControllerTest {
         Appearance a1 = new Appearance();
         a1.setE_id("1");
         a1.setEventTitle("Boschini Birthday");
-        a1.setStartTime(mockStartTime);
-        a1.setEndTime(mockEndTime);
+        //a1.setStartTime(mockStartTime);
+        //a1.setEndTime(mockEndTime);
         a1.setEventType("Private");
         a1.setOrganizationName("Boschini Million Dollar Group");
         a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");

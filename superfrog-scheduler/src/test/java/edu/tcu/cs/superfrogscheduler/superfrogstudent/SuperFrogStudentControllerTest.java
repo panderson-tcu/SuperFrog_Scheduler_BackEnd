@@ -102,9 +102,6 @@ class SuperFrogStudentControllerTest {
     }
 
     @Test
-    void findSFSById() {
-    }
-    @Test
     void testFindSFSByIdSuccess() throws Exception {
         // Given
         given(this.studentService.findById("1")).willReturn(this.students.get(0));
@@ -144,7 +141,7 @@ class SuperFrogStudentControllerTest {
                 .andExpect(jsonPath("$.data", Matchers.hasSize(this.students.size())))
                 .andExpect(jsonPath("$.data[0].firstName").value("Hiep"))
 
-                .andExpect(jsonPath("$.data[0].lastName").value("Hiep"))
+                .andExpect(jsonPath("$.data[0].lastName").value("Nguyen"))
 
 
 

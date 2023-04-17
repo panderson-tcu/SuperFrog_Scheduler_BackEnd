@@ -12,18 +12,34 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Appearance implements Serializable{
+
     @Id
     private String E_id;
 
+    //Customer information
+    private String C_firstName;
+
+    private String C_lastName;
+
+    private String C_phone;
+
+    private String C_email;
+
+
+
+//Event information
+
     private String eventTitle;
 
-    @Column(name = "start")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime startTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @Column(name = "end")
-    private LocalDateTime endTime;
+    //@Column(name = "start")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    //private LocalDateTime start;
+
+    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    //@Column(name = "end")
+    //private LocalDateTime end;
+
 
     private String eventType;
 
@@ -33,8 +49,6 @@ public class Appearance implements Serializable{
 
     private Boolean onCampus;
 
-
-
     private String specialInstructions;
 
     private String expenseBen;
@@ -43,16 +57,14 @@ public class Appearance implements Serializable{
 
     private String eventDescription;
 
-    //private String approvedStatus; // pending, approved, or denied
     @Enumerated(EnumType.STRING)
     private AppearanceStatus status;
 
-    @ManyToOne
-    private SuperFrogStudent superFrogStudent;
+    public Appearance() {
+    }
 
-    @ManyToOne
-    private Customer customer;
-
+    //@ManyToOne
+    //private SuperFrogStudent superFrogStudent;
 
     public String getE_id() {
         return E_id;
@@ -70,21 +82,6 @@ public class Appearance implements Serializable{
         this.eventTitle = eventTitle;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
 
     public String getEventType() {
         return eventType;
@@ -117,7 +114,23 @@ public class Appearance implements Serializable{
         return onCampus;
     }
 
+    /*
+    public LocalDateTime getStart() {
+        return start;
+    }
 
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
+    }
+    */
 
     public String getSpecialInstructions() {
         return specialInstructions;
@@ -157,5 +170,35 @@ public class Appearance implements Serializable{
 
     public void setStatus(AppearanceStatus status) {
         this.status = status;
+    }
+
+    public void setC_firstName(String c_firstName) {
+        C_firstName = c_firstName;
+    }
+    public String getC_firstName() {
+        return C_firstName;
+    }
+    public String getC_lastName() {
+        return C_lastName;
+    }
+
+    public void setC_lastName(String c_lastName) {
+        C_lastName = c_lastName;
+    }
+
+    public String getC_phone() {
+        return C_phone;
+    }
+
+    public void setC_phone(String c_phone) {
+        C_phone = c_phone;
+    }
+
+    public String getC_email() {
+        return C_email;
+    }
+
+    public void setC_email(String c_email) {
+        C_email = c_email;
     }
 }

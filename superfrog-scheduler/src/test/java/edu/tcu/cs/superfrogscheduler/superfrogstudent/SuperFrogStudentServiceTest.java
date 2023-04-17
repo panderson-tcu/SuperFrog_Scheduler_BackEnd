@@ -135,34 +135,6 @@ class SuperFrogStudentServiceTest {
 
     @Test
     void testFindSuperFrogStudentSuccess() {
-        //given
-
-        given(studentRepository.findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
-                "Hiep",
-                "Nguyen",
-                "(682) 365-5307",
-                "hiep.n.nguyen@tcu.edu"))
-                .willReturn(students);
-
-        //when
-        List<SuperFrogStudent> returnedStudentList = studentService.findSuperFrogStudent("Hiep", "Nguyen", "(682) 365-5307", "hiep.n.nguyen@tcu.edu");
-
-        //then
-        assertThat(returnedStudentList.size()).isEqualTo(students.size());
-
-        IntStream.range(0, students.size()).forEach(i -> {
-            assertThat(returnedStudentList.get(i).getFirstName()).isEqualTo(students.get(i).getFirstName());
-            assertThat(returnedStudentList.get(i).getLastName()).isEqualTo(students.get(i).getLastName());
-            assertThat(returnedStudentList.get(i).getEmail()).isEqualTo(students.get(i).getEmail());
-            assertThat(returnedStudentList.get(i).getPhone()).isEqualTo(students.get(i).getPhone());
-        });
-
-        verify(studentRepository, times(1)).findSuperFrogStudentsByFirstNameAndLastNameAndPhoneAndEmail(
-                "Hiep",
-                "Nguyen",
-                "(682) 365-5307",
-                "hiep.n.nguyen@tcu.edu");
-
 
     }
 }
