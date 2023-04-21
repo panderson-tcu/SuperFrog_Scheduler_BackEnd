@@ -19,8 +19,8 @@ public class AppearanceDtoToAppearanceConverter {
 
         //Event information
         appearanceRequest.setEventTitle(source.eventTitle());
-        //appearanceRequest.setStart(source.start());
-        //appearanceRequest.setEnd(source.end());
+        appearanceRequest.setBeginning_time(source.beginning_time());
+        appearanceRequest.setEnding_time(source.ending_time());
         appearanceRequest.setEventType(source.eventType());
         appearanceRequest.setOrganizationName(source.organizationName());
         appearanceRequest.setEventAddress(source.eventAddress());

@@ -31,7 +31,7 @@ public class AppearanceController {
     @GetMapping("/{E_id}")
     public Result getAppearanceById(@PathVariable String E_id) {
         Appearance appearance = this.appearanceService.getAppearanceById(E_id);
-        return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearance);
+        return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceToAppearanceDtoConverter.convert(appearance));
     }
 
     @PutMapping("/{E_id}")

@@ -17,8 +17,8 @@ public class AppearanceToAppearanceDtoConverter {
 
                 //Event information
                 source.getEventTitle(),
-                //source.getStart(),
-                //source.getEnd(),
+                source.getBeginning_time(),
+                source.getEnding_time(),
                 source.getEventType(),
                 source.getOrganizationName(),
                 source.getEventAddress(),

@@ -25,7 +25,7 @@ public class AppearanceService {
 
                     //update customer information - no change status
                     oldAppearanceRequest.setC_firstName(updatedAppearanceRequest.getC_firstName());
-                    oldAppearanceRequest.setC_firstName(updatedAppearanceRequest.getC_lastName());
+                    oldAppearanceRequest.setC_lastName(updatedAppearanceRequest.getC_lastName());
                     oldAppearanceRequest.setC_phone(updatedAppearanceRequest.getC_phone());
                     oldAppearanceRequest.setC_email(updatedAppearanceRequest.getC_email());
                     oldAppearanceRequest.setSpecialInstructions(updatedAppearanceRequest.getSpecialInstructions());
@@ -33,8 +33,8 @@ public class AppearanceService {
 
                     //update event information - status change to pending - cancel current SFS sign-up
                     oldAppearanceRequest.setEventTitle(updatedAppearanceRequest.getEventTitle());
-                    //oldAppearanceRequest.setStart(updatedAppearanceRequest.getStart());
-                    //oldAppearanceRequest.setEnd(updatedAppearanceRequest.getEnd());
+                    oldAppearanceRequest.setBeginning_time(updatedAppearanceRequest.getBeginning_time());
+                    oldAppearanceRequest.setEnding_time(updatedAppearanceRequest.getEnding_time());
                     oldAppearanceRequest.setEventType(updatedAppearanceRequest.getEventType());
                     oldAppearanceRequest.setOrganizationName(updatedAppearanceRequest.getOrganizationName());
                     oldAppearanceRequest.setEventAddress(updatedAppearanceRequest.getEventAddress());

@@ -32,14 +32,27 @@ public class Appearance implements Serializable{
     private String eventTitle;
 
 
-    //@Column(name = "start")
-    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    //private LocalDateTime start;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime beginning_time;
 
-    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    //@Column(name = "end")
-    //private LocalDateTime end;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime ending_time;
 
+    public LocalDateTime getBeginning_time() {
+        return beginning_time;
+    }
+
+    public void setBeginning_time(LocalDateTime beginning_time) {
+        this.beginning_time = beginning_time;
+    }
+
+    public LocalDateTime getEnding_time() {
+        return ending_time;
+    }
+
+    public void setEnding_time(LocalDateTime ending_time) {
+        this.ending_time = ending_time;
+    }
 
     private String eventType;
 
@@ -114,23 +127,7 @@ public class Appearance implements Serializable{
         return onCampus;
     }
 
-    /*
-    public LocalDateTime getStart() {
-        return start;
-    }
 
-    public void setStart(LocalDateTime start) {
-        this.start = start;
-    }
-
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
-    }
-    */
 
     public String getSpecialInstructions() {
         return specialInstructions;

@@ -21,11 +21,12 @@ public record AppearanceDto(
 
         String eventTitle,
 
-        //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-        //LocalDateTime start,
+        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+        LocalDateTime beginning_time,
 
-        //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-        //LocalDateTime end,
+        @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+        LocalDateTime ending_time,
+
         String eventType,
 
         String organizationName,
