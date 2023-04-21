@@ -47,8 +47,10 @@ public class PaymentFormControllerTest {
 
         String json = this.objectMapper.writeValueAsString(requestIds);
 
+        System.out.println(json);
+
         // When and then
-        this.mockMvc.perform(post("/payment-forms").contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(post("/api/v1/payment-forms").contentType(MediaType.APPLICATION_JSON).content(json).accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.flag").value(true))
                 .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
                 .andExpect(jsonPath("$.message").value("Payment forms are generated successfully."))
