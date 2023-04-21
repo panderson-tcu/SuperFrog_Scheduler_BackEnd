@@ -30,6 +30,8 @@ public class AppearanceDtoToAppearanceConverter {
         appearanceRequest.setOutsideOrganizations(source.outsideOrganizations());
         appearanceRequest.setEventDescription(source.eventDescription());
 
+        appearanceRequest.setStatus(source.status());
+
         //miss - status - E_id
 
         return appearanceRequest;

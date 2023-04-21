@@ -26,7 +26,8 @@ public class AppearanceToAppearanceDtoConverter {
                 source.getSpecialInstructions(),
                 source.getExpenseBen(),
                 source.getOutsideOrganizations(),
-                source.getEventDescription()
+                source.getEventDescription(),
+                source.getStatus()
 
         );
 

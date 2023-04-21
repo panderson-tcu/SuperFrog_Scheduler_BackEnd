@@ -54,7 +54,7 @@ public class Appearance implements Serializable{
         this.ending_time = ending_time;
     }
 
-    private String eventType;
+    private EventType eventType;
 
     private String organizationName;
 
@@ -70,8 +70,13 @@ public class Appearance implements Serializable{
 
     private String eventDescription;
 
+    private Double mileage;
+
     @Enumerated(EnumType.STRING)
     private AppearanceStatus status;
+
+    @ManyToOne
+    private SuperFrogStudent student;
 
     public Appearance() {
     }
@@ -96,11 +101,11 @@ public class Appearance implements Serializable{
     }
 
 
-    public String getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(String eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 
@@ -128,6 +133,17 @@ public class Appearance implements Serializable{
     }
 
 
+    public Double getMileageOver(Double freeMileage) {
+        return this.mileage.compareTo(freeMileage) <= 0 ? 0.0 : this.mileage - freeMileage;
+    }
+
+    public Double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Double mileage) {
+        this.mileage = mileage;
+    }
 
     public String getSpecialInstructions() {
         return specialInstructions;
@@ -197,5 +213,13 @@ public class Appearance implements Serializable{
 
     public void setC_email(String c_email) {
         C_email = c_email;
+    }
+
+    public SuperFrogStudent getStudent() {
+        return student;
+    }
+
+    public void setStudent(SuperFrogStudent student) {
+        this.student = student;
     }
 }

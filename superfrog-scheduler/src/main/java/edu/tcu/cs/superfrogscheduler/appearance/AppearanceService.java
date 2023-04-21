@@ -4,6 +4,8 @@ import edu.tcu.cs.superfrogscheduler.system.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @Transactional
 public class AppearanceService {
@@ -32,6 +34,81 @@ public class AppearanceService {
 
 
                     //update event information - status change to pending - cancel current SFS sign-up
+
+                    //Pending Flag
+                    Boolean statusChange = Boolean.FALSE;
+
+                    String updatedEventTitle = updatedAppearanceRequest.getEventTitle();
+                    if ((!updatedEventTitle.equals(oldAppearanceRequest.getEventTitle()))
+                            || (updatedEventTitle != null && oldAppearanceRequest.getEventTitle() == null)
+                            || (updatedEventTitle == null && oldAppearanceRequest.getEventTitle() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    LocalDateTime updatedBeginning_time = updatedAppearanceRequest.getBeginning_time();
+                    LocalDateTime updatedEnding_time = updatedAppearanceRequest.getEnding_time();
+
+                    /*
+                    String updatedEventType = updatedAppearanceRequest.getEventType();
+                    if ((!updatedEventType.equals(oldAppearanceRequest.getEventType()))
+                            || (updatedEventType != null && oldAppearanceRequest.getEventType() == null)
+                            || (updatedEventType == null && oldAppearanceRequest.getEventType() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }*/
+
+                    String updatedOrganizationName = updatedAppearanceRequest.getOrganizationName();
+                    if ((!updatedOrganizationName.equals(oldAppearanceRequest.getOrganizationName()))
+                            || ( updatedOrganizationName!= null && oldAppearanceRequest.getOrganizationName() == null)
+                            || (updatedOrganizationName == null && oldAppearanceRequest.getOrganizationName() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    String updatedEventAddress = updatedAppearanceRequest.getEventAddress();
+                    if ((!updatedEventAddress.equals(oldAppearanceRequest.getEventAddress()))
+                            || ( updatedEventAddress!= null && oldAppearanceRequest.getEventAddress() == null)
+                            || (updatedEventAddress == null && oldAppearanceRequest.getEventAddress() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    Boolean updatedOnCampus = updatedAppearanceRequest.getOnCampus();
+                    if (updatedOnCampus != oldAppearanceRequest.getOnCampus()){
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    String updatedExpenseBen = updatedAppearanceRequest.getExpenseBen();
+                    if ((!updatedExpenseBen.equals(oldAppearanceRequest.getExpenseBen()))
+                            || ( updatedExpenseBen!= null && oldAppearanceRequest.getExpenseBen() == null)
+                            || (updatedExpenseBen == null && oldAppearanceRequest.getExpenseBen() != null)
+
+                    )
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    String updatedOutsideOrganizations = updatedAppearanceRequest.getOutsideOrganizations();
+                    if ((!updatedOutsideOrganizations.equals(oldAppearanceRequest.getOutsideOrganizations()))
+                            || ( updatedOutsideOrganizations!= null && oldAppearanceRequest.getOutsideOrganizations() == null)
+                            || (updatedOutsideOrganizations == null && oldAppearanceRequest.getOutsideOrganizations() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+
+                    String updatedEventDescription = updatedAppearanceRequest.getEventDescription();
+                    if ((!updatedEventDescription.equals(oldAppearanceRequest.getEventDescription()))
+                            || ( updatedEventDescription!= null && oldAppearanceRequest.getEventDescription() == null)
+                            || (updatedEventDescription == null && oldAppearanceRequest.getEventDescription() != null))
+                    {
+                        statusChange = Boolean.TRUE;
+                    }
+                    //Change status, cancel superfrog signup
+                    if (statusChange){
+                        oldAppearanceRequest.setStatus(AppearanceStatus.PENDING);
+                    }
+                    //Update old appearance request
                     oldAppearanceRequest.setEventTitle(updatedAppearanceRequest.getEventTitle());
                     oldAppearanceRequest.setBeginning_time(updatedAppearanceRequest.getBeginning_time());
                     oldAppearanceRequest.setEnding_time(updatedAppearanceRequest.getEnding_time());
@@ -42,7 +119,6 @@ public class AppearanceService {
                     oldAppearanceRequest.setExpenseBen(updatedAppearanceRequest.getExpenseBen());
                     oldAppearanceRequest.setOutsideOrganizations(updatedAppearanceRequest.getOutsideOrganizations());
                     oldAppearanceRequest.setEventDescription(updatedAppearanceRequest.getEventDescription());
-
 
                     return this.appearanceRepository.save(oldAppearanceRequest);
                 })

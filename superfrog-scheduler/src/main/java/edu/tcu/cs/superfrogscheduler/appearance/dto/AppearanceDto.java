@@ -41,10 +41,10 @@ public record AppearanceDto(
 
         String outsideOrganizations,
 
-        String eventDescription
+        String eventDescription,
 
         //@Enumerated(EnumType.STRING)
-        //AppearanceStatus status
+        AppearanceStatus status
 
 
 ) {}
