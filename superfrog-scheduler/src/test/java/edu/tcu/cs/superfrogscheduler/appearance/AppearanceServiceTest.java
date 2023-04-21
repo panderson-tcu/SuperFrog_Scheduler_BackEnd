@@ -43,7 +43,7 @@ class AppearanceServiceTest {
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
 
         Appearance a1 = new Appearance();
-        a1.setE_id("1");
+        a1.setId("1");
         a1.setC_firstName("Hiep");
         a1.setC_lastName("Nguyen");
         a1.setC_email("hiep.n.nguyen@tcu.edu");
@@ -51,7 +51,7 @@ class AppearanceServiceTest {
         a1.setEventTitle("Boschini Birthday");
         //a1.setStartTime(mockStartTime);
         //a1.setEndTime(mockEndTime);
-        a1.setEventType("Private");
+        a1.setEventType(EventType.PRIVATE);
         a1.setOrganizationName("Boschini Million Dollar Group");
         a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
         a1.setOnCampus(Boolean.FALSE);
@@ -76,7 +76,7 @@ class AppearanceServiceTest {
         assertThat(returnedAppearance.getC_phone()).isEqualTo(a1.getC_phone());
         assertThat(returnedAppearance.getC_email()).isEqualTo(a1.getC_email());
 
-        assertThat(returnedAppearance.getE_id()).isEqualTo(a1.getE_id());
+        assertThat(returnedAppearance.getId()).isEqualTo(a1.getId());
         assertThat(returnedAppearance.getEventTitle()).isEqualTo(a1.getEventTitle());
         //assertThat(returnedAppearance.getStartTime()).isEqualTo(a1.getStartTime());
         //assertThat(returnedAppearance.getEndTime()).isEqualTo(a1.getEndTime());

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Appearance implements Serializable{
 
     @Id
-    private String E_id;
+    private String Id;
 
     //Customer information
     private String C_firstName;
@@ -81,15 +81,12 @@ public class Appearance implements Serializable{
     public Appearance() {
     }
 
-    //@ManyToOne
-    //private SuperFrogStudent superFrogStudent;
-
-    public String getE_id() {
-        return E_id;
+    public String getId() {
+        return Id;
     }
 
-    public void setE_id(String e_id) {
-        E_id = e_id;
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getEventTitle() {

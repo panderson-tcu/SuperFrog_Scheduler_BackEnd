@@ -21,7 +21,7 @@ public class PaymentFormService {
     }
 
     public List<PaymentForm> generatePaymentForms(List<String> appearanceRequestIdList, Period paymentPeriod) {
-        List<Appearance> selectedRequests = this.requestRepository.findAppearancesByE_idIn(appearanceRequestIdList);
+        List<Appearance> selectedRequests = this.requestRepository.findAppearancesByIdIn(appearanceRequestIdList);
 
         Map<SuperFrogStudent, List<Appearance>> studentRequestsMap = groupRequestsBySuperFrogStudent(selectedRequests);
 

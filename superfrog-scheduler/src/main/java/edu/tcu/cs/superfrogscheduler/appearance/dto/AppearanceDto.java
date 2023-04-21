@@ -1,5 +1,6 @@
 package edu.tcu.cs.superfrogscheduler.appearance.dto;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceStatus;
+import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,7 +28,7 @@ public record AppearanceDto(
         @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
         LocalDateTime ending_time,
 
-        String eventType,
+        EventType eventType,
 
         String organizationName,
 

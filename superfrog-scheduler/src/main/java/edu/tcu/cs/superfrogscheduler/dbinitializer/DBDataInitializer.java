@@ -3,6 +3,7 @@ package edu.tcu.cs.superfrogscheduler.dbinitializer;
 
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
+import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
 
@@ -18,6 +19,8 @@ public class DBDataInitializer implements CommandLineRunner {
     private final SuperFrogStudentRepository studentRepositoryRepository;
 
     private final AppearanceRepository appearanceRepository;
+
+
 
     public DBDataInitializer(SuperFrogStudentRepository studentRepositoryRepository, AppearanceRepository appearanceRepository) {
         this.studentRepositoryRepository = studentRepositoryRepository;
@@ -90,7 +93,7 @@ public class DBDataInitializer implements CommandLineRunner {
 
 
         Appearance a1 = new Appearance();
-        a1.setE_id("1");
+        a1.setId("1");
         a1.setC_firstName("Hiep");
         a1.setC_lastName("Nguyen");
         a1.setC_email("hiep.n.nguyen@tcu.edu");
@@ -103,7 +106,7 @@ public class DBDataInitializer implements CommandLineRunner {
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
         a1.setEnding_time(mockEndTime);
 
-        a1.setEventType("Private");
+        a1.setEventType(EventType.TCU);
         a1.setOrganizationName("Boschini Million Dollar Group");
         a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
         a1.setOnCampus(Boolean.FALSE);
@@ -112,8 +115,14 @@ public class DBDataInitializer implements CommandLineRunner {
         a1.setOutsideOrganizations(null);
         a1.setEventDescription("The annual millionaire party organized by Boschini");
         a1.setStatus(null);
+        a1.setMileage(50.0);
+        a1.setStudent(s1);
 
         appearanceRepository.save(a1);
+
+
+
+
 
     }
 

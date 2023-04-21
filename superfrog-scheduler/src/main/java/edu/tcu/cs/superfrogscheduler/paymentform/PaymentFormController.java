@@ -14,7 +14,6 @@ import java.util.List;
 public class PaymentFormController {
     private PaymentFormService paymentService;
 
-
     public PaymentFormController(PaymentFormService paymentService) {
         this.paymentService = paymentService;
     }

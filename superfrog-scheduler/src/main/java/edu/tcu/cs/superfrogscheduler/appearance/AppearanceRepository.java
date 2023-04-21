@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface AppearanceRepository extends JpaRepository<Appearance, String> {
 
-    List<Appearance> findAppearancesByE_idIn(List<String> appearanceRequestIdList);
+    List<Appearance> findAppearancesByIdIn(List<String> appearanceRequestIdList);
 
 }
