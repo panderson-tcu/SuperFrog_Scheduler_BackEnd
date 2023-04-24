@@ -12,28 +12,55 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Appearance implements Serializable{
+
     @Id
-    private String E_id;
+    private String Id;
+
+    //Customer information
+    private String C_firstName;
+
+    private String C_lastName;
+
+    private String C_phone;
+
+    private String C_email;
+
+
+
+//Event information
 
     private String eventTitle;
 
-    @Column(name = "start")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime startTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @Column(name = "end")
-    private LocalDateTime endTime;
+    private LocalDateTime beginning_time;
 
-    private String eventType;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime ending_time;
+
+    public LocalDateTime getBeginning_time() {
+        return beginning_time;
+    }
+
+    public void setBeginning_time(LocalDateTime beginning_time) {
+        this.beginning_time = beginning_time;
+    }
+
+    public LocalDateTime getEnding_time() {
+        return ending_time;
+    }
+
+    public void setEnding_time(LocalDateTime ending_time) {
+        this.ending_time = ending_time;
+    }
+
+    private EventType eventType;
 
     private String organizationName;
 
     private String eventAddress;
 
     private Boolean onCampus;
-
-
 
     private String specialInstructions;
 
@@ -43,23 +70,27 @@ public class Appearance implements Serializable{
 
     private String eventDescription;
 
-    //private String approvedStatus; // pending, approved, or denied
+    private Double mileage;
+
     @Enumerated(EnumType.STRING)
     private AppearanceStatus status;
 
     @ManyToOne
-    private SuperFrogStudent superFrogStudent;
+    private SuperFrogStudent student;
 
     @ManyToOne
-    private Customer customer;
+    private SuperFrogStudent worker;
 
 
-    public String getE_id() {
-        return E_id;
+    public Appearance() {
     }
 
-    public void setE_id(String e_id) {
-        E_id = e_id;
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String Id) {
+        this.Id = Id;
     }
 
     public String getEventTitle() {
@@ -70,27 +101,12 @@ public class Appearance implements Serializable{
         this.eventTitle = eventTitle;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(String eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 
@@ -118,6 +134,17 @@ public class Appearance implements Serializable{
     }
 
 
+    public Double getMileageOver(Double freeMileage) {
+        return this.mileage.compareTo(freeMileage) <= 0 ? 0.0 : this.mileage - freeMileage;
+    }
+
+    public Double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Double mileage) {
+        this.mileage = mileage;
+    }
 
     public String getSpecialInstructions() {
         return specialInstructions;
@@ -158,4 +185,52 @@ public class Appearance implements Serializable{
     public void setStatus(AppearanceStatus status) {
         this.status = status;
     }
+
+    public void setC_firstName(String c_firstName) {
+        C_firstName = c_firstName;
+    }
+    public String getC_firstName() {
+        return C_firstName;
+    }
+    public String getC_lastName() {
+        return C_lastName;
+    }
+
+    public void setC_lastName(String c_lastName) {
+        C_lastName = c_lastName;
+    }
+
+    public String getC_phone() {
+        return C_phone;
+    }
+
+    public void setC_phone(String c_phone) {
+        C_phone = c_phone;
+    }
+
+    public String getC_email() {
+        return C_email;
+    }
+
+    public void setC_email(String c_email) {
+        C_email = c_email;
+    }
+
+    public SuperFrogStudent getStudent() {
+        return student;
+    }
+
+    public void setStudent(SuperFrogStudent student) {
+        this.student = student;
+    }
+
+    public SuperFrogStudent getWorker() {
+        return worker;
+    }
+
+    public void setWorker(SuperFrogStudent worker) {
+        this.worker = worker;
+    }
+
+
 }

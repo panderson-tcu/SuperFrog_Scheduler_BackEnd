@@ -8,10 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/paymentform/PaymentForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/paymentform/PaymentForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +166,7 @@
       <workItem from="1681235642437" duration="15186000" />
       <workItem from="1681265076020" duration="432000" />
       <workItem from="1681265519310" duration="721000" />
+      <workItem from="1682358088874" duration="9626000" />
       <workItem from="1682360656467" duration="5141000" />
     </task>
     <servers />

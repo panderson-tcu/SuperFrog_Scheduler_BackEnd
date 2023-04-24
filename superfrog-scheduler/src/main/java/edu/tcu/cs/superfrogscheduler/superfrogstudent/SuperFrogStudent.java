@@ -1,18 +1,27 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
-
+import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
+import edu.tcu.cs.superfrogscheduler.appearance.EventType;
+import edu.tcu.cs.superfrogscheduler.paymentform.PaymentForm;
+import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import edu.tcu.cs.superfrogscheduler.system.TransportationFeeCalculator;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Entity
 public class SuperFrogStudent implements Serializable {
     @Id
-    private String SFS_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer SFS_id;
 
     private String firstName;
 
@@ -38,11 +47,16 @@ public class SuperFrogStudent implements Serializable {
     @ManyToOne
     private SpiritDirector director;
 
-    public String getSFS_id() {
+    public Integer getSFS_id() {
         return SFS_id;
     }
+    
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "worker")
+    private List<Appearance> appearance = new ArrayList<>();
 
-    public void setSFS_id(String SFS_id) {
+
+
+    public void setSFS_id(Integer SFS_id) {
         this.SFS_id = SFS_id;
     }
 
@@ -103,5 +117,55 @@ public class SuperFrogStudent implements Serializable {
     }
 
     private PaymentEnum paymentPreference;
+
+    public PaymentForm generatePaymentForm(List<Appearance> requests, Period paymentPeriod) {
+        /**
+         * Group the given requests by their event type (TCU, NONPROFIT, and PRIVATE), then for each event type, calculate the number of hours
+         * this SuperFrogStudent has worked. The result of this step is a Map<EventType, Double>.
+         * For example:
+         *  EventType.TCU -> 2.5 hrs
+         *  EventType.NONPROFIT -> 3 hrs
+         *  EventType.PRIVATE -> 2 hrs
+         */
+        Map<EventType, Double> eventTypeHoursMap = requests.stream().collect(Collectors.groupingBy(request -> request.getEventType(),
+                Collectors.mapping(request -> request.getBeginning_time().until(request.getEnding_time(), ChronoUnit.MINUTES) / 60.0,
+                        Collectors.reducing(0.0, Double::sum))));
+
+        BigDecimal totalAppearanceFee = new BigDecimal(0.0);
+
+        // Calculate the total appearance fee by going over the map.
+        for (Map.Entry<EventType, Double> entry : eventTypeHoursMap.entrySet()) {
+            totalAppearanceFee = totalAppearanceFee
+                    .add(BigDecimal.valueOf(entry.getKey().getHourlyRate())
+                            .multiply(BigDecimal.valueOf(entry.getValue())));
+        }
+
+        // We also need to consider transportation fee.
+        BigDecimal transportationFee = TransportationFeeCalculator.INSTANCE.calculateTransportationFee(requests);
+
+        BigDecimal totalAmount = totalAppearanceFee.add(transportationFee);
+
+        return new PaymentForm(this.firstName, this.lastName, this.SFS_id, paymentPeriod, totalAmount);
+
+    }
+
+    public List<Appearance> getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(List<Appearance> appearance) {
+        this.appearance = appearance;
+    }
+
+    public void addAppearance(Appearance appearance) {
+        appearance.setWorker(this);
+        this.appearance.add(appearance);
+    }
+
+    public void removeAppearance(Appearance appearanceToBeAssigned) {
+        // Remove student worker.
+        appearanceToBeAssigned.setWorker(null);
+        this.appearance.remove(appearanceToBeAssigned);
+    }
 
 }

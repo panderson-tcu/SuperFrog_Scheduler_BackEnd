@@ -47,11 +47,11 @@ class AppearanceControllerTest {
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
 
         Appearance a1 = new Appearance();
-        a1.setE_id("1");
+        a1.setId("1");
         a1.setEventTitle("Boschini Birthday");
-        a1.setStartTime(mockStartTime);
-        a1.setEndTime(mockEndTime);
-        a1.setEventType("Private");
+        //a1.setStartTime(mockStartTime);
+        //a1.setEndTime(mockEndTime);
+        a1.setEventType(EventType.PRIVATE);
         a1.setOrganizationName("Boschini Million Dollar Group");
         a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
         a1.setOnCampus(Boolean.FALSE);
