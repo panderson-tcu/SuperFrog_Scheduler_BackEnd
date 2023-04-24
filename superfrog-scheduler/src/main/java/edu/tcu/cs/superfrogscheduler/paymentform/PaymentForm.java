@@ -45,6 +45,9 @@ public class PaymentForm {
         this.amount = amount;
     }
 
+    public PaymentForm(String firstName, String lastName, Integer sfsId, Period paymentPeriod, BigDecimal totalAmount) {
+    }
+
     public String getFirstName() {
         return firstName;
     }

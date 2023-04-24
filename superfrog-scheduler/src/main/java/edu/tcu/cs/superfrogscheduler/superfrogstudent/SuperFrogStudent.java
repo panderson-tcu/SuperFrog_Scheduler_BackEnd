@@ -8,9 +8,7 @@ import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
 import edu.tcu.cs.superfrogscheduler.system.TransportationFeeCalculator;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -22,7 +20,8 @@ import java.util.stream.Collectors;
 @Entity
 public class SuperFrogStudent implements Serializable {
     @Id
-    private String SFS_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer SFS_id;
 
     private String firstName;
 
@@ -48,11 +47,11 @@ public class SuperFrogStudent implements Serializable {
     @ManyToOne
     private SpiritDirector director;
 
-    public String getSFS_id() {
+    public Integer getSFS_id() {
         return SFS_id;
     }
 
-    public void setSFS_id(String SFS_id) {
+    public void setSFS_id(Integer SFS_id) {
         this.SFS_id = SFS_id;
     }
 

@@ -60,9 +60,10 @@ public class SuperFrogStudentController {
         return new Result(true, StatusCode.SUCCESS, "Find students success", studentDtos);
     }
 
-
-
-
+//    @PostMapping
+//    public Result addSFS(@Valid @RequestBody SuperFrogStudent newSuperFrogStudent) {
+//        SuperFrogStudent saved
+//    }
 
 
 
