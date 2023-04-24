@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -80,5 +81,21 @@ class AppearanceControllerTest {
                 .andExpect(jsonPath("$.message").value("Find appearance Success"))
                 .andExpect(jsonPath("$.data.eventTitle").value("Boschini Birthday"));
 
+    }
+
+    @Test
+    void testFindAllAppearancesSuccess() throws Exception {
+        //Given
+        given(this.appearanceService.findAll()).willReturn(this.appearances);
+
+
+        //When and Then
+        this.mockMvc.perform(get("api/v1/appearance").accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.flag").value(true))
+                .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
+                .andExpect(jsonPath("$.message").value("Find All Success"))
+                .andExpect(jsonPath("$.data", Matchers.hasSize(this.appearances.size())))
+                .andExpect(jsonPath("$.data[0].id").value("Find All Success"))
+                .andExpect(jsonPath("$.data[0].name").value("Find All Success"));
     }
 }

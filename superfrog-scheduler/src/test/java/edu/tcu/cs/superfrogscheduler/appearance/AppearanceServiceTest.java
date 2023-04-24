@@ -16,6 +16,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -28,8 +30,29 @@ class AppearanceServiceTest {
     @InjectMocks
     AppearanceService appearanceService;
 
+    List<Appearance> appearances;
+
     @BeforeEach
     void setUp() {
+        Appearance a1 = new Appearance();
+        a1.setE_id("1");
+        a1.setEventTitle("Boschini Birthday");
+        LocalDateTime mockStartTime = null;
+        a1.setStartTime(null);
+        LocalDateTime mockEndTime = null;
+        a1.setEndTime(null);
+        a1.setEventType("Private");
+        a1.setOrganizationName("Boschini Million Dollar Group");
+        a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
+        a1.setOnCampus(Boolean.FALSE);
+        a1.setSpecialInstructions(null);
+        a1.setExpenseBen(null);
+        a1.setOutsideOrganizations(null);
+        a1.setEventDescription("The annual millionare party organized by Boschini");
+        a1.setStatus(null);
+
+        this.appearances = new ArrayList<>();
+        this.appearances.add(a1);
     }
 
     @AfterEach
@@ -92,6 +115,20 @@ class AppearanceServiceTest {
 
 
         verify(appearanceRepository, times(1)).findById("1");
+
+    }
+
+    @Test
+    void FindAllSuccess() {
+        //Given
+        given(appearanceRepository.findAll()).willReturn(this.appearances);
+
+        //When
+        List<Appearance> actualAppearence = appearanceService.findAll();
+
+        //Then
+        assertThat(actualAppearence.size()).isEqualTo(this.appearances.size());
+        verify(appearanceRepository, times(1)).findAll();
 
     }
 }
