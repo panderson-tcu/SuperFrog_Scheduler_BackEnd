@@ -1,6 +1,5 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
-
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.paymentform.PaymentForm;
@@ -8,13 +7,12 @@ import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
 import edu.tcu.cs.superfrogscheduler.system.TransportationFeeCalculator;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -47,6 +45,9 @@ public class SuperFrogStudent implements Serializable {
 
     @ManyToOne
     private SpiritDirector director;
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "worker")
+    private List<Appearance> appearance = new ArrayList<>();
 
     public String getSFS_id() {
         return SFS_id;
@@ -143,6 +144,25 @@ public class SuperFrogStudent implements Serializable {
 
         return new PaymentForm(this.firstName, this.lastName, this.SFS_id, paymentPeriod, totalAmount);
 
+    }
+
+    public List<Appearance> getAppearance() {
+        return appearance;
+    }
+
+    public void setAppearance(List<Appearance> appearance) {
+        this.appearance = appearance;
+    }
+
+    public void addAppearance(Appearance appearance) {
+        appearance.setWorker(this);
+        this.appearance.add(appearance);
+    }
+
+    public void removeAppearance(Appearance appearanceToBeAssigned) {
+        // Remove student worker.
+        appearanceToBeAssigned.setWorker(null);
+        this.appearance.remove(appearanceToBeAssigned);
     }
 
 }
