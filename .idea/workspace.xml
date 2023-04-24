@@ -5,13 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb9d9d9-46ae-4ad0-8de0-930c0db0b5a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,6 +41,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2Nw6AMsbEnSa8o3rAH6hfHEtPxo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -67,11 +78,27 @@
       <recent name="edu.tcu.cs.superfrogscheduler.appearance" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in superfrog-scheduler">
+  <component name="RunManager" selected="JUnit.AppearanceServiceTest.FindAllSuccess">
     <configuration name="All in superfrog-scheduler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppearanceServiceTest.FindAllSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.appearance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.appearance" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.appearance.AppearanceServiceTest" />
+      <option name="METHOD_NAME" value="FindAllSuccess" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,6 +144,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AppearanceServiceTest.FindAllSuccess" />
         <item itemvalue="JUnit.All in superfrog-scheduler" />
         <item itemvalue="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess" />
         <item itemvalue="JUnit.SuperFrogStudentServiceTest.testFindByIdSuccess" />
@@ -136,10 +164,20 @@
       <workItem from="1681235642437" duration="15186000" />
       <workItem from="1681265076020" duration="432000" />
       <workItem from="1681265519310" duration="721000" />
+      <workItem from="1682360656467" duration="5141000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="com.intellij.configurationType" implementationName="SpringBootApplicationConfigurationType" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
 </project>

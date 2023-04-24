@@ -3,6 +3,8 @@ package edu.tcu.cs.superfrogscheduler.appearance;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class AppearanceService {
@@ -17,4 +19,8 @@ public class AppearanceService {
         return this.appearanceRepository.findById(E_id).get();
     }
 
+
+    public List<Appearance> findAll() {
+        return this.appearanceRepository.findAll();
+    }
 }
