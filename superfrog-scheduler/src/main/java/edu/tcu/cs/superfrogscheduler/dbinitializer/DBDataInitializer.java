@@ -33,7 +33,7 @@ public class DBDataInitializer implements CommandLineRunner {
 
         //SFS
         SuperFrogStudent s1 = new SuperFrogStudent();
-        s1.setSFS_id("1");
+        s1.setSFS_id(1);
         s1.setFirstName("Hiep");
         s1.setLastName("Nguyen");
         s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
@@ -42,7 +42,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s1.setInternational(Boolean.TRUE);
 
         SuperFrogStudent s2 = new SuperFrogStudent();
-        s2.setSFS_id("2");
+        s2.setSFS_id(2);
         s2.setFirstName("Ryan");
         s2.setLastName("Usell");
         s2.setPhone("(123) 456-789");
@@ -50,7 +50,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s2.setInternational(Boolean.FALSE);
 
         SuperFrogStudent s3 = new SuperFrogStudent();
-        s3.setSFS_id("3");
+        s3.setSFS_id(3);
         s3.setFirstName("Paige");
         s3.setLastName("Anderson");
         s3.setPhone("(123) 456-789");
@@ -58,7 +58,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s3.setInternational(Boolean.FALSE);
 
         SuperFrogStudent s4 = new SuperFrogStudent();
-        s4.setSFS_id("4");
+        s4.setSFS_id(4);
         s4.setFirstName("Annalise");
         s4.setLastName("Gadbois");
         s4.setPhone("(123) 456-789");
@@ -67,7 +67,7 @@ public class DBDataInitializer implements CommandLineRunner {
 
 
         SuperFrogStudent s5 = new SuperFrogStudent();
-        s5.setSFS_id("5");
+        s5.setSFS_id(5);
         s5.setFirstName("Danny");
         s5.setLastName("Mairena Jarquin");
         s5.setPhone("(123) 456-789");
@@ -75,7 +75,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s5.setInternational(Boolean.TRUE);
 
         SuperFrogStudent s6 = new SuperFrogStudent();
-        s6.setSFS_id("6");
+        s6.setSFS_id(6);
         s6.setFirstName("Hiep");
         s6.setLastName("Nguyen");
         s6.setPhone("(682) 365-5307");
