@@ -79,20 +79,18 @@ public class SuperFrogStudentService {
         // for future would do a notifaction or throw an exception, by design we can only add a superfrog to an appearance if there is someone not signed up
     }
 
-    public void unassignAppearance(String SFS_id, String E_id){
-        Appearance appearanceToBeUnassigned = this.appearanceRepository.findById(E_id)
-                .orElseThrow(() -> new ObjectNotFoundException("appearance", E_id));
-
-        // Find this SuperFrogStudent by Id fromm DB.
-        SuperFrogStudent superFrogStudent = this.studentRepository.findById(SFS_id)
-                .orElseThrow(() -> new ObjectNotFoundException("SuperFrog Student", SFS_id));
-
-        // We need to see if the appearance is already owned by some SuperFrogStudent.
-        if (appearanceToBeUnassigned.getWorker() != null) {
-            appearanceToBeUnassigned.getWorker().removeAppearance(appearanceToBeUnassigned);
-        }
-    }
-
-
+//    public void unassignAppearance(String SFS_id, String E_id){
+//        Appearance appearanceToBeUnassigned = this.appearanceRepository.findById(E_id)
+//                .orElseThrow(() -> new ObjectNotFoundException("appearance", E_id));
+//
+//        // Find this SuperFrogStudent by Id fromm DB.
+//        SuperFrogStudent superFrogStudent = this.studentRepository.findById(SFS_id)
+//                .orElseThrow(() -> new ObjectNotFoundException("SuperFrog Student", SFS_id));
+//
+//        // We need to see if the appearance is already owned by some SuperFrogStudent.
+//        if (appearanceToBeUnassigned.getWorker() != null) {
+//            appearanceToBeUnassigned.getWorker().removeAppearance(appearanceToBeUnassigned);
+//        }
+//    }
 
 }

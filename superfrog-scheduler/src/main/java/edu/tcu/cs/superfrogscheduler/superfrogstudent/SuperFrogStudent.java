@@ -48,14 +48,13 @@ public class SuperFrogStudent implements Serializable {
     private SpiritDirector director;
 
     public Integer getSFS_id() {
+        return SFS_id;
+    }
     
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "worker")
     private List<Appearance> appearance = new ArrayList<>();
 
-    // public String getSFS_id() {
 
-        return SFS_id;
-    }
 
     public void setSFS_id(Integer SFS_id) {
         this.SFS_id = SFS_id;
