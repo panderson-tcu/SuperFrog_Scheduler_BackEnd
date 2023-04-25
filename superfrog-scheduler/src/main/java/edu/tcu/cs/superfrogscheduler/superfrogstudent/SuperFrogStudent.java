@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class SuperFrogStudent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer SFS_id;
+    private Integer SFSid;
 
     private String firstName;
 
@@ -35,6 +35,8 @@ public class SuperFrogStudent implements Serializable {
 
     private Boolean international;
 
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "assignedStudent")
+    private List<Appearance> appearances = new ArrayList<>();
 
     public SpiritDirector getDirector() {
         return director;
@@ -48,7 +50,7 @@ public class SuperFrogStudent implements Serializable {
     private SpiritDirector director;
 
     public Integer getSFS_id() {
-        return SFS_id;
+        return SFSid;
     }
     
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "worker")
@@ -57,7 +59,7 @@ public class SuperFrogStudent implements Serializable {
 
 
     public void setSFS_id(Integer SFS_id) {
-        this.SFS_id = SFS_id;
+        this.SFSid = SFS_id;
     }
 
     public String getFirstName() {
@@ -118,6 +120,30 @@ public class SuperFrogStudent implements Serializable {
 
     private PaymentEnum paymentPreference;
 
+    public List<Appearance> getAppearances() {
+        return appearances;
+    }
+
+    public void setAppearances(List<Appearance> appearances) {
+        this.appearances = appearances;
+    }
+
+    public void addAppearance(Appearance appearance){
+        appearance.setStudent(this);
+        this.appearances.add(appearance);
+    }
+
+    public void removeAllAppearances() {
+        this.appearances.stream().forEach(appearance -> appearance.setStudent(null));
+        this.appearances = new ArrayList<>();
+    }
+
+    public void removeAppearance(Appearance appearanceToBeRemoved) {
+        // Remove artifact owner.
+        appearanceToBeRemoved.setStudent(null);
+        this.appearances.remove(appearanceToBeRemoved);
+    }
+
     public PaymentForm generatePaymentForm(List<Appearance> requests, Period paymentPeriod) {
         /**
          * Group the given requests by their event type (TCU, NONPROFIT, and PRIVATE), then for each event type, calculate the number of hours
@@ -145,7 +171,7 @@ public class SuperFrogStudent implements Serializable {
 
         BigDecimal totalAmount = totalAppearanceFee.add(transportationFee);
 
-        return new PaymentForm(this.firstName, this.lastName, this.SFS_id, paymentPeriod, totalAmount);
+        return new PaymentForm(this.firstName, this.lastName, this.SFSid, paymentPeriod, totalAmount);
 
     }
 

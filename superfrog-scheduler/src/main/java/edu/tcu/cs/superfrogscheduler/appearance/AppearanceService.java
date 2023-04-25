@@ -21,6 +21,11 @@ public class AppearanceService {
         return this.appearanceRepository.findById(E_id).get();
     }
 
+
+    public List<Appearance> getAppearanceByStudentId(String SFS_id){
+        return this.appearanceRepository.findAppearancesByAssignedStudentSFSid(SFS_id);
+    }
+
     //UC 2: Customer edits an existing appearance request based on ID
     public Appearance update(String E_id, Appearance updatedAppearanceRequest) {
         return this.appearanceRepository.findById(E_id)
@@ -130,5 +135,8 @@ public class AppearanceService {
     public List<Appearance> findAll() {
         return this.appearanceRepository.findAll();
     }
+
+
+
 
 }

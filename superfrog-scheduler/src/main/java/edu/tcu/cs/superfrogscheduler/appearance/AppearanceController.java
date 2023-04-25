@@ -6,6 +6,7 @@ import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearance
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.converter.SFSToSuperFrogStudentDtoConverter;
+import edu.tcu.cs.superfrogscheduler.superfrogstudent.dto.SuperFrogStudentDto;
 import edu.tcu.cs.superfrogscheduler.system.Result;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
 import jakarta.validation.Valid;
@@ -15,11 +16,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+
 @RestController
 @RequestMapping("api/v1/appearances")
 public class AppearanceController {
     private final AppearanceService appearanceService;
     private SFSToSuperFrogStudentDtoConverter appearanceToAppearanceDtoConverter;
+
+    private final AppearanceRepository appearanceRepository;
 
     private final AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter;
 
@@ -28,8 +32,9 @@ public class AppearanceController {
 
 
 
-    public AppearanceController(AppearanceService appearanceService, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter) {
+    public AppearanceController(AppearanceService appearanceService, AppearanceRepository appearanceRepository, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter) {
         this.appearanceService = appearanceService;
+        this.appearanceRepository = appearanceRepository;
         this.appearanceDtoToAppearanceConverter = appearanceDtoToAppearanceConverter;
         this.appearanceToAppearanceDtoConverter = appearanceToAppearanceDtoConverter;
     }
@@ -49,7 +54,8 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
     }
 
-    @GetMapping("api/v1/appearances")
+/*
+@GetMapping("api/v1/appearances")
     public  <AppearanceDto> Result findAllAppearance() {
             List<Appearance> foundAppearances = this.appearanceService.findAll();
             //Convert foundAppearance to a list of appearanceDtos
@@ -60,4 +66,21 @@ public class AppearanceController {
 
             return new Result(true, StatusCode.SUCCESS, "find all success", appearanceDtos);
     }
+
+*/
+    //Find apperance by student id
+
+    @GetMapping("/findByStudentId/{SFS_id}")
+    public Result getAppearanceByStudentId(@PathVariable String SFS_id) {
+        List<Appearance> appearances = this.appearanceService.getAppearanceByStudentId(SFS_id);
+
+        List<AppearanceDto> appearanceDtos = appearances
+                .stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)
+                .toList();
+        return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
+    }
+
+
+
 }

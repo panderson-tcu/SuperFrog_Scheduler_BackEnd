@@ -3,6 +3,7 @@ package edu.tcu.cs.superfrogscheduler.dbinitializer;
 
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
+import edu.tcu.cs.superfrogscheduler.appearance.AppearanceStatus;
 import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
@@ -30,6 +31,35 @@ public class DBDataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //Appearance requests
+
+
+        Appearance a1 = new Appearance();
+        a1.setId("1");
+        a1.setC_firstName("Hiep");
+        a1.setC_lastName("Nguyen");
+        a1.setC_email("hiep.n.nguyen@tcu.edu");
+        a1.setC_phone("(682) 365-5307");
+        a1.setEventTitle("Boschini Birthday");
+
+        LocalDateTime mockStartTime = LocalDateTime.of(2023, 12, 23, 11, 0, 0);
+        a1.setBeginning_time(mockStartTime);
+
+        LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
+        a1.setEnding_time(mockEndTime);
+
+        a1.setEventType(EventType.TCU);
+        a1.setOrganizationName("Boschini Million Dollar Group");
+        a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
+        a1.setOnCampus(Boolean.FALSE);
+        a1.setSpecialInstructions(null);
+        a1.setExpenseBen(null);
+        a1.setOutsideOrganizations(null);
+        a1.setEventDescription("The annual millionaire party organized by Boschini");
+        a1.setStatus(AppearanceStatus.ASSIGNED);
+        a1.setMileage(50.0);
+
+
 
         //SFS
         SuperFrogStudent s1 = new SuperFrogStudent();
@@ -40,6 +70,7 @@ public class DBDataInitializer implements CommandLineRunner {
         s1.setPhone("(682) 365-5307");
         s1.setEmail("hiep.n.nguyen@tcu.edu");
         s1.setInternational(Boolean.TRUE);
+        s1.addAppearance(a1);
 
         SuperFrogStudent s2 = new SuperFrogStudent();
         s2.setSFS_id(2);
@@ -89,36 +120,15 @@ public class DBDataInitializer implements CommandLineRunner {
         studentRepositoryRepository.save(s5);
 
 
-        //Appearance requests
-
-
-        Appearance a1 = new Appearance();
-        a1.setId("1");
-        a1.setC_firstName("Hiep");
-        a1.setC_lastName("Nguyen");
-        a1.setC_email("hiep.n.nguyen@tcu.edu");
-        a1.setC_phone("(682) 365-5307");
-        a1.setEventTitle("Boschini Birthday");
-
-        LocalDateTime mockStartTime = LocalDateTime.of(2023, 12, 23, 11, 0, 0);
-        a1.setBeginning_time(mockStartTime);
-
-        LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
-        a1.setEnding_time(mockEndTime);
-
-        a1.setEventType(EventType.TCU);
-        a1.setOrganizationName("Boschini Million Dollar Group");
-        a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
-        a1.setOnCampus(Boolean.FALSE);
-        a1.setSpecialInstructions(null);
-        a1.setExpenseBen(null);
-        a1.setOutsideOrganizations(null);
-        a1.setEventDescription("The annual millionaire party organized by Boschini");
-        a1.setStatus(null);
-        a1.setMileage(50.0);
-        a1.setStudent(s1);
-
         appearanceRepository.save(a1);
+
+
+
+
+
+
+
+
 
 
 

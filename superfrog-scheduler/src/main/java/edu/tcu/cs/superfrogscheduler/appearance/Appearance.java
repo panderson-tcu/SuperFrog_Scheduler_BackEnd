@@ -76,7 +76,7 @@ public class Appearance implements Serializable{
     private AppearanceStatus status;
 
     @ManyToOne
-    private SuperFrogStudent student;
+    private SuperFrogStudent assignedStudent;
 
     @ManyToOne
     private SuperFrogStudent worker;
@@ -138,9 +138,7 @@ public class Appearance implements Serializable{
         return this.mileage.compareTo(freeMileage) <= 0 ? 0.0 : this.mileage - freeMileage;
     }
 
-    public Double getMileage() {
-        return mileage;
-    }
+
 
     public void setMileage(Double mileage) {
         this.mileage = mileage;
@@ -217,11 +215,11 @@ public class Appearance implements Serializable{
     }
 
     public SuperFrogStudent getStudent() {
-        return student;
+        return assignedStudent;
     }
 
-    public void setStudent(SuperFrogStudent student) {
-        this.student = student;
+    public void setStudent(SuperFrogStudent assignedStudent) {
+        this.assignedStudent = assignedStudent;
     }
 
     public SuperFrogStudent getWorker() {
