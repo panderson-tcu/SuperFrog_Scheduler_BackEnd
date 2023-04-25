@@ -12,6 +12,7 @@ public class SuperFrogStudentDtoToSFSConverter {
         student.setLastName(source.lastName());
         student.setPhone(source.phoneNumber());
         student.setEmail(source.email());
+        student.setAddress(source.address());
 
         return student;
     }

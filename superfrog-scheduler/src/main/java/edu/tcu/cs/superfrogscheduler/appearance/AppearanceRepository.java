@@ -10,4 +10,7 @@ public interface AppearanceRepository extends JpaRepository<Appearance, String> 
 
     List<Appearance> findAppearancesByIdIn(List<String> appearanceRequestIdList);
 
+    List<Appearance> findAppearancesByAssignedStudentSFSid(String SFSid);
+
+
 }

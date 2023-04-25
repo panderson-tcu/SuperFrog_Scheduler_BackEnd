@@ -123,7 +123,8 @@ class SuperFrogStudentControllerTest {
                 "Hiep",
                 "Nguyen",
                 "(682) 365-5307",
-                "hiep.n.nguyen@tcu.edu"
+                "hiep.n.nguyen@tcu.edu",
+                "3145 Cockrell Avenue, DFW, TX 76109"
                 );
 
         String json = this.objectMapper.writeValueAsString(studentDto);

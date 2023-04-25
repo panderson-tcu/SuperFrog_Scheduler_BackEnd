@@ -12,7 +12,8 @@ public class SFSToSuperFrogStudentDtoConverter {
                 source.getFirstName(),
                 source.getLastName(),
                 source.getPhone(),
-                source.getEmail()
+                source.getEmail(),
+                source.getAddress()
                 );
         return studentDto;
     }

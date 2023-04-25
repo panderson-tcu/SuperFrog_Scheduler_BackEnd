@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Transactional
@@ -18,6 +19,11 @@ public class AppearanceService {
 
     public Appearance getAppearanceById(String E_id){
         return this.appearanceRepository.findById(E_id).get();
+    }
+
+
+    public List<Appearance> getAppearanceByStudentId(String SFS_id){
+        return this.appearanceRepository.findAppearancesByAssignedStudentSFSid(SFS_id);
     }
 
     //UC 2: Customer edits an existing appearance request based on ID
@@ -124,6 +130,9 @@ public class AppearanceService {
                 })
                 .orElseThrow(() -> new ObjectNotFoundException("Apperance Request", E_id));
     }
+
+
+
 
 
 }
