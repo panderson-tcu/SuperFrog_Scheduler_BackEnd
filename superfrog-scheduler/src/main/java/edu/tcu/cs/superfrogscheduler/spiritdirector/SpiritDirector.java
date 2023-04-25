@@ -1,9 +1,7 @@
 package edu.tcu.cs.superfrogscheduler.spiritdirector;
 
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,7 +10,8 @@ import java.util.List;
 public class SpiritDirector implements Serializable {
 
     @Id
-    private String SD_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer SD_id;
 
     private String firstName;
 
@@ -27,11 +26,11 @@ public class SpiritDirector implements Serializable {
     @OneToMany(mappedBy = "director")
     private List<SuperFrogStudent> students;
 
-    public String getSD_id() {
+    public Integer getSD_id() {
         return SD_id;
     }
 
-    public void setSD_id(String SD_id) {
+    public void setSD_id(Integer SD_id) {
         this.SD_id = SD_id;
     }
 

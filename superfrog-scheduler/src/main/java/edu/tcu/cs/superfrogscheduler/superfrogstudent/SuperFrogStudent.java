@@ -5,24 +5,26 @@ import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.paymentform.PaymentForm;
 import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
+import edu.tcu.cs.superfrogscheduler.performancereport.PerformanceReport;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
 import edu.tcu.cs.superfrogscheduler.system.TransportationFeeCalculator;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Entity
 public class SuperFrogStudent implements Serializable {
+
     @Id
-    private String SFS_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer SFSid;
 
     private String firstName;
 
@@ -36,6 +38,8 @@ public class SuperFrogStudent implements Serializable {
 
     private Boolean international;
 
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "assignedStudent")
+    private List<Appearance> appearances = new ArrayList<>();
 
     public SpiritDirector getDirector() {
         return director;
@@ -48,12 +52,14 @@ public class SuperFrogStudent implements Serializable {
     @ManyToOne
     private SpiritDirector director;
 
-    public String getSFS_id() {
-        return SFS_id;
+
+
+    public Integer getSFS_id() {
+        return SFSid;
     }
 
-    public void setSFS_id(String SFS_id) {
-        this.SFS_id = SFS_id;
+    public void setSFS_id(Integer SFS_id) {
+        this.SFSid = SFS_id;
     }
 
     public String getFirstName() {
@@ -114,6 +120,30 @@ public class SuperFrogStudent implements Serializable {
 
     private PaymentEnum paymentPreference;
 
+    public List<Appearance> getAppearances() {
+        return appearances;
+    }
+
+    public void setAppearances(List<Appearance> appearances) {
+        this.appearances = appearances;
+    }
+
+    public void addAppearance(Appearance appearance){
+        appearance.setStudent(this);
+        this.appearances.add(appearance);
+    }
+
+    public void removeAllAppearances() {
+        this.appearances.stream().forEach(appearance -> appearance.setStudent(null));
+        this.appearances = new ArrayList<>();
+    }
+
+    public void removeAppearance(Appearance appearanceToBeRemoved) {
+        // Remove artifact owner.
+        appearanceToBeRemoved.setStudent(null);
+        this.appearances.remove(appearanceToBeRemoved);
+    }
+
     public PaymentForm generatePaymentForm(List<Appearance> requests, Period paymentPeriod) {
         /**
          * Group the given requests by their event type (TCU, NONPROFIT, and PRIVATE), then for each event type, calculate the number of hours
@@ -141,8 +171,22 @@ public class SuperFrogStudent implements Serializable {
 
         BigDecimal totalAmount = totalAppearanceFee.add(transportationFee);
 
-        return new PaymentForm(this.firstName, this.lastName, this.SFS_id, paymentPeriod, totalAmount);
+        return new PaymentForm(this.firstName, this.lastName, this.SFSid, paymentPeriod, totalAmount);
 
     }
+
+
+    public PerformanceReport generatePerformanceReport(List<Appearance> completedRequests, Period periodRange){
+        //this should be the number of completed appearances within the period range
+        Integer numberOfCompletedAppearances = completedRequests.size();
+        return new PerformanceReport(this.firstName, this.lastName, periodRange, numberOfCompletedAppearances);
+    }
+
+
+
+
+
+
+
 
 }

@@ -18,8 +18,10 @@ public class SuperFrogStudentService {
         this.superFrogStudentsSpecifications = superFrogStudentsSpecifications;
     }
 
-    public SuperFrogStudent findById(String SFS_id){
-        return this.studentRepository.findById(SFS_id).get();
+
+    //Supplementary: Find all superfrogstudents
+    public List<SuperFrogStudent> findAllSuperFrogStudent(){
+        return this.studentRepository.findAll();
     }
 
 
@@ -32,6 +34,8 @@ public class SuperFrogStudentService {
         return this.studentRepository.findAll(searchSpecification);
     }
 
-
-
+    //UC 16: View a superfrog student account
+    public SuperFrogStudent findById(Integer SFS_id){
+        return this.studentRepository.findById(SFS_id).get();
+    }
 }

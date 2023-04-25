@@ -3,18 +3,19 @@ package edu.tcu.cs.superfrogscheduler.appearance;
 import edu.tcu.cs.superfrogscheduler.customer.Customer;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDateTime;
+
 
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-import java.time.LocalDateTime;
 
 @Entity
 public class Appearance implements Serializable{
 
     @Id
-    private String Id;
+    private Integer Id;
 
     //Customer information
     private String C_firstName;
@@ -33,25 +34,25 @@ public class Appearance implements Serializable{
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime beginning_time;
+    private LocalDateTime beginningTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime ending_time;
+    private LocalDateTime endingTime;
 
     public LocalDateTime getBeginning_time() {
-        return beginning_time;
+        return beginningTime;
     }
 
     public void setBeginning_time(LocalDateTime beginning_time) {
-        this.beginning_time = beginning_time;
+        this.beginningTime = beginning_time;
     }
 
     public LocalDateTime getEnding_time() {
-        return ending_time;
+        return endingTime;
     }
 
     public void setEnding_time(LocalDateTime ending_time) {
-        this.ending_time = ending_time;
+        this.endingTime = ending_time;
     }
 
     private EventType eventType;
@@ -76,16 +77,16 @@ public class Appearance implements Serializable{
     private AppearanceStatus status;
 
     @ManyToOne
-    private SuperFrogStudent student;
+    private SuperFrogStudent assignedStudent;
 
     public Appearance() {
     }
 
-    public String getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(String Id) {
+    public void setId(Integer Id) {
         this.Id = Id;
     }
 
@@ -134,9 +135,7 @@ public class Appearance implements Serializable{
         return this.mileage.compareTo(freeMileage) <= 0 ? 0.0 : this.mileage - freeMileage;
     }
 
-    public Double getMileage() {
-        return mileage;
-    }
+
 
     public void setMileage(Double mileage) {
         this.mileage = mileage;
@@ -213,10 +212,10 @@ public class Appearance implements Serializable{
     }
 
     public SuperFrogStudent getStudent() {
-        return student;
+        return assignedStudent;
     }
 
-    public void setStudent(SuperFrogStudent student) {
-        this.student = student;
+    public void setStudent(SuperFrogStudent assignedStudent) {
+        this.assignedStudent = assignedStudent;
     }
 }

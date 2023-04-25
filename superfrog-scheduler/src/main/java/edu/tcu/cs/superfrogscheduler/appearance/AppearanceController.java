@@ -4,10 +4,13 @@ import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceDtoToAppeara
 import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearanceDtoConverter;
 
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
+import edu.tcu.cs.superfrogscheduler.superfrogstudent.dto.SuperFrogStudentDto;
 import edu.tcu.cs.superfrogscheduler.system.Result;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -15,32 +18,47 @@ import org.springframework.web.bind.annotation.*;
 public class AppearanceController {
     private final AppearanceService appearanceService;
 
+    private final AppearanceRepository appearanceRepository;
+
     private final AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter;
 
     private final AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter;
 
 
-
-
-    public AppearanceController(AppearanceService appearanceService, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter) {
+    public AppearanceController(AppearanceService appearanceService, AppearanceRepository appearanceRepository, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter) {
         this.appearanceService = appearanceService;
+        this.appearanceRepository = appearanceRepository;
         this.appearanceDtoToAppearanceConverter = appearanceDtoToAppearanceConverter;
         this.appearanceToAppearanceDtoConverter = appearanceToAppearanceDtoConverter;
     }
 
     @GetMapping("/{E_id}")
-    public Result getAppearanceById(@PathVariable String E_id) {
-        Appearance appearance = this.appearanceService.getAppearanceById(E_id);
+    public Result getAppearanceByAppearanceId(@PathVariable Integer E_id) {
+        Appearance appearance = this.appearanceService.getAppearanceByAppearanceId(E_id);
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceToAppearanceDtoConverter.convert(appearance));
     }
 
     @PutMapping("/{E_id}")
-    public Result updateAppearanceRequest(@PathVariable String E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
+    public Result updateAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
         Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
         Appearance updatedAppearanceRequest = this.appearanceService.update(E_id, update);
         AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
 
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
     }
+
+    //Find a list of apperances by student id
+    @GetMapping("/findByStudentId/{SFS_id}")
+    public Result getAppearancesByStudentId(@PathVariable Integer SFS_id) {
+        List<Appearance> appearances = this.appearanceService.getAppearancesByStudentId(SFS_id);
+
+        List<AppearanceDto> appearanceDtos = appearances
+                .stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)
+                .toList();
+        return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
+    }
+
+
 
 }

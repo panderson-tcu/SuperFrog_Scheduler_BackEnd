@@ -20,7 +20,7 @@ public class PaymentFormController {
 
     @PostMapping("/api/v1/payment-forms")
     public Result generatePaymentForms(@RequestBody RequestIds requestIds) {
-        List<String> selectedIds = requestIds.getRequestIds();
+        List<Integer> selectedIds = requestIds.getRequestIds();
 
         Period paymentPeriod = requestIds.getPaymentPeriod();
 

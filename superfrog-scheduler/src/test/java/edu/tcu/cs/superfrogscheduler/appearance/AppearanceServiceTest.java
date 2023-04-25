@@ -37,13 +37,13 @@ class AppearanceServiceTest {
     }
 
     @Test
-    void testGetAppearanceByIdSuccess() {
+    void testGetAppearanceByAppearanceIdSuccess() {
 
         LocalDateTime mockStartTime = LocalDateTime.of(2023, 12, 23, 11, 0, 0);
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
 
         Appearance a1 = new Appearance();
-        a1.setId("1");
+        a1.setId(1);
         a1.setC_firstName("Hiep");
         a1.setC_lastName("Nguyen");
         a1.setC_email("hiep.n.nguyen@tcu.edu");
@@ -63,11 +63,11 @@ class AppearanceServiceTest {
 
 
         //define the behavior of the mock object
-        given(appearanceRepository.findById("1")).willReturn(Optional.of(a1));
+        given(appearanceRepository.findById(1)).willReturn(Optional.of(a1));
 
         //When - call the method to be tested - act on target behavior
 
-        Appearance returnedAppearance = appearanceService.getAppearanceById("1");
+        Appearance returnedAppearance = appearanceService.getAppearanceByAppearanceId(1);
 
 
         //Then - compare the result from when and given -> if the insertion is True then test passed
@@ -89,9 +89,7 @@ class AppearanceServiceTest {
         assertThat(returnedAppearance.getOutsideOrganizations()).isEqualTo(a1.getOutsideOrganizations());
         assertThat(returnedAppearance.getEventDescription()).isEqualTo(a1.getEventDescription());
         assertThat(returnedAppearance.getStatus()).isEqualTo(a1.getStatus());
-
-
-        verify(appearanceRepository, times(1)).findById("1");
+        verify(appearanceRepository, times(1)).findById(1);
 
     }
 }
