@@ -72,13 +72,13 @@ public class SuperFrogStudentController {
         return new Result(true, StatusCode.SUCCESS, "Find students success", studentDtos);
     }
 
-    //UC 16: Find a SuperFrogStudent by ID
+    //UC 16: Find a SuperFrogStudent Account by ID
     @GetMapping("/{SFS_id}")
-    public Result findSFSById(@PathVariable String SFS_id) {
+    public Result findSFSById(@PathVariable Integer SFS_id) {
         SuperFrogStudent student = this.studentService.findById(SFS_id);
         SuperFrogStudentDto studentDto = this.sfsToSuperFrogStudentDtoConverter.convert(student);
 
-        List<Appearance> appearances = this.appearanceService.getAppearanceByStudentId(SFS_id);
+        List<Appearance> appearances = this.appearanceService.getAppearancesByStudentId(SFS_id);
 
         List<AppearanceDto> appearanceDtos = appearances
                 .stream()
@@ -89,7 +89,6 @@ public class SuperFrogStudentController {
         Map<String, Object> response = new HashMap<>();
         response.put("super frog student", studentDto);
         response.put("appearances: ", appearanceDtos);
-
         return new Result(true, StatusCode.SUCCESS, "Find One Success", response);
     }
 

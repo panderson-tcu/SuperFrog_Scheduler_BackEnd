@@ -35,11 +35,7 @@ public class SuperFrogStudentService {
     }
 
     //UC 16: View a superfrog student account
-    public SuperFrogStudent findById(String SFS_id){
+    public SuperFrogStudent findById(Integer SFS_id){
         return this.studentRepository.findById(SFS_id).get();
     }
-
-
-
-
 }

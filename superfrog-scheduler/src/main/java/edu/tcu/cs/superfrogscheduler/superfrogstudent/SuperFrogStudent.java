@@ -5,6 +5,7 @@ import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.paymentform.PaymentForm;
 import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
+import edu.tcu.cs.superfrogscheduler.performancereport.PerformanceReport;
 import edu.tcu.cs.superfrogscheduler.spiritdirector.SpiritDirector;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.util.PaymentEnum;
 import edu.tcu.cs.superfrogscheduler.system.TransportationFeeCalculator;
@@ -20,8 +21,10 @@ import java.util.stream.Collectors;
 
 @Entity
 public class SuperFrogStudent implements Serializable {
+
     @Id
-    private String SFSid;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer SFSid;
 
     private String firstName;
 
@@ -51,11 +54,11 @@ public class SuperFrogStudent implements Serializable {
 
 
 
-    public String getSFS_id() {
+    public Integer getSFS_id() {
         return SFSid;
     }
 
-    public void setSFS_id(String SFS_id) {
+    public void setSFS_id(Integer SFS_id) {
         this.SFSid = SFS_id;
     }
 
@@ -171,5 +174,19 @@ public class SuperFrogStudent implements Serializable {
         return new PaymentForm(this.firstName, this.lastName, this.SFSid, paymentPeriod, totalAmount);
 
     }
+
+
+    public PerformanceReport generatePerformanceReport(List<Appearance> completedRequests, Period periodRange){
+        //this should be the number of completed appearances within the period range
+        Integer numberOfCompletedAppearances = completedRequests.size();
+        return new PerformanceReport(this.firstName, this.lastName, periodRange, numberOfCompletedAppearances);
+    }
+
+
+
+
+
+
+
 
 }

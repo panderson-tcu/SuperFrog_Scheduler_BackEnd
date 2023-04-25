@@ -46,7 +46,7 @@ class AppearanceControllerTest {
         LocalDateTime mockEndTime = LocalDateTime.of(2023, 12, 23, 15, 0, 0);
 
         Appearance a1 = new Appearance();
-        a1.setId("1");
+        a1.setId(1);
         a1.setEventTitle("Boschini Birthday");
         //a1.setStartTime(mockStartTime);
         //a1.setEndTime(mockEndTime);
@@ -69,9 +69,9 @@ class AppearanceControllerTest {
     }
 
     @Test
-    void testGetAppearanceByIdSuccess() throws Exception{
+    void testGetAppearanceByAppearanceIdSuccess() throws Exception{
         // Given
-        given(this.appearanceService.getAppearanceById("1")).willReturn(this.appearances.get(0));
+        given(this.appearanceService.getAppearanceByAppearanceId(1)).willReturn(this.appearances.get(0));
 
         // When and then
         this.mockMvc.perform(get("/api/v1/appearances/1").accept(MediaType.APPLICATION_JSON))

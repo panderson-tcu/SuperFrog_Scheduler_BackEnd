@@ -5,7 +5,7 @@ import edu.tcu.cs.superfrogscheduler.paymentform.util.Period;
 import java.util.List;
 
 public class RequestIds {
-    private List<String> requestIds;
+    private List<Integer> requestIds;
 
     private Period paymentPeriod;
 
@@ -14,16 +14,16 @@ public class RequestIds {
 
     }
 
-    public RequestIds(List<String> requestIds, Period paymentPeriod) {
+    public RequestIds(List<Integer> requestIds, Period paymentPeriod) {
         this.requestIds = requestIds;
         this.paymentPeriod = paymentPeriod;
     }
 
-    public List<String> getRequestIds() {
+    public List<Integer> getRequestIds() {
         return requestIds;
     }
 
-    public void setRequestIds(List<String> requestIds) {
+    public void setRequestIds(List<Integer> requestIds) {
         this.requestIds = requestIds;
     }
 

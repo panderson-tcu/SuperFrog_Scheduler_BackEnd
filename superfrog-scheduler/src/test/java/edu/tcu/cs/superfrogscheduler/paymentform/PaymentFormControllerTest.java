@@ -39,7 +39,7 @@ public class PaymentFormControllerTest {
     @Test
     public void should_generate_payments_form_for_SuperFrog_students() throws Exception {
         // Given
-        List<String> selectedAppearanceRequestIds = List.of("1"); // Assume the Spirit Director has selected 7 completed requests for April.
+        List<Integer> selectedAppearanceRequestIds = List.of(1); // Assume the Spirit Director has selected 7 completed requests for April.
 
         Period paymentPeriod = new Period(LocalDate.of(2023, 12, 21), LocalDate.of(2023, 12, 25));
 

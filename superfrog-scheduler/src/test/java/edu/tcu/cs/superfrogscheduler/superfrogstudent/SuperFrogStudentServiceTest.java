@@ -36,7 +36,7 @@ class SuperFrogStudentServiceTest {
     @BeforeEach
     void setUp() {
         SuperFrogStudent s1 = new SuperFrogStudent();
-        s1.setSFS_id("1");
+        s1.setSFS_id(1);
         s1.setFirstName("Hiep");
         s1.setLastName("Nguyen");
         s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
@@ -45,7 +45,7 @@ class SuperFrogStudentServiceTest {
         s1.setInternational(Boolean.TRUE);
 
         SuperFrogStudent s2 = new SuperFrogStudent();
-        s2.setSFS_id("2");
+        s2.setSFS_id(2);
         s2.setFirstName("Ryan");
         s2.setLastName("Usell");
         s2.setPhone("(123) 456-789");
@@ -53,7 +53,7 @@ class SuperFrogStudentServiceTest {
         s2.setInternational(Boolean.FALSE);
 
         SuperFrogStudent s3 = new SuperFrogStudent();
-        s3.setSFS_id("3");
+        s3.setSFS_id(3);
         s3.setFirstName("Paige");
         s3.setLastName("Anderson");
         s3.setPhone("(123) 456-789");
@@ -61,7 +61,7 @@ class SuperFrogStudentServiceTest {
         s3.setInternational(Boolean.FALSE);
 
         SuperFrogStudent s4 = new SuperFrogStudent();
-        s4.setSFS_id("4");
+        s4.setSFS_id(4);
         s4.setFirstName("Annalise");
         s4.setLastName("Gadbois");
         s4.setPhone("(123) 456-789");
@@ -70,7 +70,7 @@ class SuperFrogStudentServiceTest {
 
 
         SuperFrogStudent s5 = new SuperFrogStudent();
-        s5.setSFS_id("5");
+        s5.setSFS_id(5);
         s5.setFirstName("Danny");
         s5.setLastName("Mairena Jarquin");
         s5.setPhone("(123) 456-789");
@@ -78,7 +78,7 @@ class SuperFrogStudentServiceTest {
         s5.setInternational(Boolean.TRUE);
 
         SuperFrogStudent s6 = new SuperFrogStudent();
-        s6.setSFS_id("6");
+        s6.setSFS_id(6);
         s6.setFirstName("Hiep");
         s6.setLastName("Nguyen");
         s6.setPhone("(682) 365-5307");
@@ -98,7 +98,7 @@ class SuperFrogStudentServiceTest {
     void testFindByIdSuccess() {
 
         SuperFrogStudent s1 = new SuperFrogStudent();
-        s1.setSFS_id("1250808601744904191");
+        s1.setSFS_id(1);
         s1.setFirstName("Hiep");
         s1.setLastName("Nguyen");
         s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
@@ -107,18 +107,18 @@ class SuperFrogStudentServiceTest {
         s1.setInternational(Boolean.TRUE);
 
         SpiritDirector d = new SpiritDirector();
-        d.setSD_id("01");
+        d.setSD_id(1);
         d.setFirstName("Bingyang");
         d.setLastName("Wei");
         s1.setDirector(d);
 
 
         //define the behavior of the mock object
-        given(studentRepository.findById("1250808601744904191")).willReturn(Optional.of(s1));
+        given(studentRepository.findById(1)).willReturn(Optional.of(s1));
 
         //When - call the method to be tested - act on target behavior
 
-        SuperFrogStudent returnedStudent = studentService.findById("1250808601744904191");
+        SuperFrogStudent returnedStudent = studentService.findById(1);
 
 
         //Then - compare the result from when and given -> if the insertion is True then test passed
@@ -130,7 +130,7 @@ class SuperFrogStudentServiceTest {
         assertThat(returnedStudent.getEmail()).isEqualTo(s1.getEmail());
         assertThat(returnedStudent.getInternational()).isEqualTo(s1.getInternational());
 
-        verify(studentRepository, times(1)).findById("1250808601744904191");
+        verify(studentRepository, times(1)).findById(1);
     }
 
     @Test

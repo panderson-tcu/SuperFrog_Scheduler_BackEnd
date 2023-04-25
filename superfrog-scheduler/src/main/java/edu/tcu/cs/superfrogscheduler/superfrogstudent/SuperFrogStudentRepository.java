@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Repository
-public interface SuperFrogStudentRepository extends JpaRepository<SuperFrogStudent, String>, JpaSpecificationExecutor<SuperFrogStudent> {
+public interface SuperFrogStudentRepository extends JpaRepository<SuperFrogStudent, Integer>, JpaSpecificationExecutor<SuperFrogStudent> {
 
 
 }
