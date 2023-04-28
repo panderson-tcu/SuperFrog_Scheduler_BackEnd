@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class SuperFrogStudentDtoToSFSConverter {
     public SuperFrogStudent convert(SuperFrogStudentDto source){
         SuperFrogStudent student = new SuperFrogStudent();
+        student.setSFS_id(source.id());
         student.setFirstName(source.firstName());
         student.setLastName(source.lastName());
         student.setPhone(source.phoneNumber());
