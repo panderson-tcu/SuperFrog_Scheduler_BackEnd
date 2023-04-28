@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Entity
-public class User implements Serializable {
+public class SchedulerUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String roles; // Space separated string
 
 
-    public User() {
+    public SchedulerUser() {
     }
 
     public Integer getId() {

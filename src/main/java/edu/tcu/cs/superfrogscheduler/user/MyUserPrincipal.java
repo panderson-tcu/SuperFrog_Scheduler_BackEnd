@@ -10,29 +10,29 @@ import java.util.Collection;
 
 public class MyUserPrincipal implements UserDetails {
 
-    private User user;
+    private SchedulerUser schedulerUser;
 
 
-    public MyUserPrincipal(User hogwartsUser) {
-        this.user = user;
+    public MyUserPrincipal(SchedulerUser schedulerUser) {
+        this.schedulerUser = schedulerUser;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        return Arrays.stream(StringUtils.tokenizeToStringArray(this.user.getRoles(), " "))
+        return Arrays.stream(StringUtils.tokenizeToStringArray(this.schedulerUser.getRoles(), " "))
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
                 .toList();
     }
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.schedulerUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUsername();
+        return this.schedulerUser.getUsername();
     }
 
     @Override
@@ -52,11 +52,11 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.user.isEnabled();
+        return this.schedulerUser.isEnabled();
     }
 
-    public User getUser() {
-        return user;
+    public SchedulerUser getUser() {
+        return schedulerUser;
     }
 
 }

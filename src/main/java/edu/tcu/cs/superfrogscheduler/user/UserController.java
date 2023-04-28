@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("${api.endpoint.base-url}/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping
     public Result findAllUsers() {
-        List<User> foundUsers = this.userService.findAll();
+        List<SchedulerUser> foundUsers = this.userService.findAll();
 
         // Convert foundUsers to a list of UserDtos.
         List<UserDto> userDtos = foundUsers.stream()
@@ -43,7 +43,7 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public Result findUserById(@PathVariable Integer userId) {
-        User foundUser = this.userService.findById(userId);
+        SchedulerUser foundUser = this.userService.findById(userId);
         UserDto userDto = this.userToUserDtoConverter.convert(foundUser);
         return new Result(true, StatusCode.SUCCESS, "Find One Success", userDto);
     }
@@ -55,8 +55,8 @@ public class UserController {
      * @return
      */
     @PostMapping
-    public Result addUser(@Valid @RequestBody User newUser) {
-        User savedUser = this.userService.save(newUser);
+    public Result addUser(@Valid @RequestBody SchedulerUser newUser) {
+        SchedulerUser savedUser = this.userService.save(newUser);
         UserDto savedUserDto = this.userToUserDtoConverter.convert(savedUser);
         return new Result(true, StatusCode.SUCCESS, "Add Success", savedUserDto);
     }
@@ -64,8 +64,8 @@ public class UserController {
     // We are not using this to update password, need another changePassword method in this class.
     @PutMapping("/{userId}")
     public Result updateUser(@PathVariable Integer userId, @Valid @RequestBody UserDto userDto) {
-        User update = this.userDtoToUserConverter.convert(userDto);
-        User updatedUser = this.userService.update(userId, update);
+        SchedulerUser update = this.userDtoToUserConverter.convert(userDto);
+        SchedulerUser updatedUser = this.userService.update(userId, update);
         UserDto updatedUserDto = this.userToUserDtoConverter.convert(updatedUser);
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedUserDto);
     }

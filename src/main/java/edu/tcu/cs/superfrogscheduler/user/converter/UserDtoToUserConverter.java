@@ -1,16 +1,16 @@
 package edu.tcu.cs.superfrogscheduler.user.converter;
 
-import edu.tcu.cs.superfrogscheduler.user.User;
+import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
 import edu.tcu.cs.superfrogscheduler.user.dto.UserDto;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDtoToUserConverter implements Converter<UserDto, User> {
+public class UserDtoToUserConverter implements Converter<UserDto, SchedulerUser> {
 
     @Override
-    public User convert(UserDto source) {
-        User user = new User();
+    public SchedulerUser convert(UserDto source) {
+        SchedulerUser user = new SchedulerUser();
         user.setUsername(source.username());
         user.setEnabled(source.enabled());
         user.setRoles(source.roles());

@@ -33,32 +33,33 @@ import java.security.interfaces.RSAPublicKey;
 @Configuration
 public class SecurityConfiguration {
 
-    private final RSAPublicKey publicKey;
+//    private final RSAPublicKey publicKey;
+//
+//    private final RSAPrivateKey privateKey;
 
-    private final RSAPrivateKey privateKey;
-
-    @Value("${api.endpoint.base-url}")
+//    @Value("${api.endpoint.base-url}")
+    @Value("/api/v1")
     private String baseUrl;
 
-    private final CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint;
+//    private final CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint;
+//
+//    private final CustomBearerTokenAuthenticationEntryPoint customBearerTokenAuthenticationEntryPoint;
+//
+//    private final CustomBearerTokenAccessDeniedHandler customBearerTokenAccessDeniedHandler;
 
-    private final CustomBearerTokenAuthenticationEntryPoint customBearerTokenAuthenticationEntryPoint;
 
-    private final CustomBearerTokenAccessDeniedHandler customBearerTokenAccessDeniedHandler;
-
-
-    public SecurityConfiguration(CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint, CustomBearerTokenAuthenticationEntryPoint customBearerTokenAuthenticationEntryPoint, CustomBearerTokenAccessDeniedHandler customBearerTokenAccessDeniedHandler) throws NoSuchAlgorithmException {
-        this.customBasicAuthenticationEntryPoint = customBasicAuthenticationEntryPoint;
-        this.customBearerTokenAuthenticationEntryPoint = customBearerTokenAuthenticationEntryPoint;
-        this.customBearerTokenAccessDeniedHandler = customBearerTokenAccessDeniedHandler;
-
-        // Generate a public/private key pair.
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(2048); // The generated key will have a size of 2048 bits.
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        this.publicKey = (RSAPublicKey) keyPair.getPublic();
-        this.privateKey = (RSAPrivateKey) keyPair.getPrivate();
-    }
+//    public SecurityConfiguration(CustomBasicAuthenticationEntryPoint customBasicAuthenticationEntryPoint, CustomBearerTokenAuthenticationEntryPoint customBearerTokenAuthenticationEntryPoint, CustomBearerTokenAccessDeniedHandler customBearerTokenAccessDeniedHandler) throws NoSuchAlgorithmException {
+//        this.customBasicAuthenticationEntryPoint = customBasicAuthenticationEntryPoint;
+//        this.customBearerTokenAuthenticationEntryPoint = customBearerTokenAuthenticationEntryPoint;
+//        this.customBearerTokenAccessDeniedHandler = customBearerTokenAccessDeniedHandler;
+//
+//        // Generate a public/private key pair.
+//        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+//        keyPairGenerator.initialize(2048); // The generated key will have a size of 2048 bits.
+//        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+//        this.publicKey = (RSAPublicKey) keyPair.getPublic();
+//        this.privateKey = (RSAPrivateKey) keyPair.getPrivate();
+//    }
 
     // Set athorization for various endpoints.
     @Bean
@@ -67,23 +68,25 @@ public class SecurityConfiguration {
                 // It is recommended to secure your application at the API endpoint level.
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers(HttpMethod.GET, this.baseUrl + "/appearances/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/users/**").hasAuthority("ROLE_admin") // Protect the endpoint.
-                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/users").hasAuthority("ROLE_admin") // Protect the endpoint.
-                        .requestMatchers(HttpMethod.PUT, this.baseUrl + "/users/**").hasAuthority("ROLE_admin") // Protect the endpoint.
-                        .requestMatchers(HttpMethod.DELETE, this.baseUrl + "/users/**").hasAuthority("ROLE_admin") // Protect the endpoint.
+                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/users").hasAuthority("ROLE_admin") // Protect the endpoint.
+                        //.requestMatchers(HttpMethod.GET, this.baseUrl + "/users").hasAuthority("ROLE_admin") // Protect the endpoint.
+                        //.requestMatchers(HttpMethod.PUT, this.baseUrl + "/users/**").hasAuthority("ROLE_admin") // Protect the endpoint.
+                        //.requestMatchers(HttpMethod.DELETE, this.baseUrl + "/users/**").hasAuthority("ROLE_admin") // Protect the endpoint.
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll() // Explicitly fallback to antMatcher inside requestMatchers.
 
-                        .anyRequest().authenticated()
+                        //.anyRequest().authenticated()
                 )
                 .headers(headers -> headers.frameOptions().disable()) // This is for H2 browser console access.
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
-                .httpBasic(httpBasic -> httpBasic.authenticationEntryPoint(this.customBasicAuthenticationEntryPoint))
-                .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt().and()
-                        .authenticationEntryPoint(this.customBearerTokenAuthenticationEntryPoint)
-                        .accessDeniedHandler(this.customBearerTokenAccessDeniedHandler))
-                .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(httpBasic -> httpBasic.authenticationEntryPoint(this.customBasicAuthenticationEntryPoint))
+//                .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt().and()
+//                        .authenticationEntryPoint(this.customBearerTokenAuthenticationEntryPoint)
+//                        .accessDeniedHandler(this.customBearerTokenAccessDeniedHandler))
+
+                //.sessionManagement(sessionManagement ->
+                 //       sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
 
@@ -92,18 +95,19 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder(12);
     }
 
-    @Bean
-    public JwtEncoder jwtEncoder() {
-        JWK jwk = new RSAKey.Builder(this.publicKey).privateKey(this.privateKey).build();
-        JWKSource<SecurityContext> jwkSet = new ImmutableJWKSet<>(new JWKSet(jwk));
-        return new NimbusJwtEncoder(jwkSet);
-    }
+//    @Bean
+//    public JwtEncoder jwtEncoder() {
+//        JWK jwk = new RSAKey.Builder(this.publicKey).privateKey(this.privateKey).build();
+//        JWKSource<SecurityContext> jwkSet = new ImmutableJWKSet<>(new JWKSet(jwk));
+//        return new NimbusJwtEncoder(jwkSet);
+//    }
+//
+//    @Bean
+//    public JwtDecoder jwtDecoder() {
+//        return NimbusJwtDecoder.withPublicKey(this.publicKey).build();
+//    }
 
-    @Bean
-    public JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withPublicKey(this.publicKey).build();
-    }
-
+   /*
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
@@ -116,5 +120,7 @@ public class SecurityConfiguration {
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);
         return jwtAuthenticationConverter;
     }
+
+   */
 
 }

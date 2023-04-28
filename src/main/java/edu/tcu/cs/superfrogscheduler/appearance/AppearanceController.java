@@ -4,10 +4,12 @@ import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceDtoToAppeara
 import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearanceDtoConverter;
 
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
-import edu.tcu.cs.superfrogscheduler.superfrogstudent.dto.SuperFrogStudentDto;
 import edu.tcu.cs.superfrogscheduler.system.Result;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
+import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
+import edu.tcu.cs.superfrogscheduler.user.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +26,15 @@ public class AppearanceController {
 
     private final AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter;
 
+    private final UserService userService;
 
-    public AppearanceController(AppearanceService appearanceService, AppearanceRepository appearanceRepository, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter) {
+
+    public AppearanceController(AppearanceService appearanceService, AppearanceRepository appearanceRepository, AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter, UserService userService) {
         this.appearanceService = appearanceService;
         this.appearanceRepository = appearanceRepository;
         this.appearanceDtoToAppearanceConverter = appearanceDtoToAppearanceConverter;
         this.appearanceToAppearanceDtoConverter = appearanceToAppearanceDtoConverter;
+        this.userService = userService;
     }
 
     @GetMapping("/{E_id}")
@@ -58,7 +63,5 @@ public class AppearanceController {
                 .toList();
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
     }
-
-
 
 }
