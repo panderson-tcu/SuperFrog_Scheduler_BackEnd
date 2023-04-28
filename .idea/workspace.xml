@@ -67,7 +67,7 @@
       <recent name="edu.tcu.cs.superfrogscheduler.appearance" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in superfrog-scheduler">
+  <component name="RunManager" selected="Spring Boot.SuperfrogSchedulerApplication">
     <configuration name="All in superfrog-scheduler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <option name="PACKAGE_NAME" value="" />
