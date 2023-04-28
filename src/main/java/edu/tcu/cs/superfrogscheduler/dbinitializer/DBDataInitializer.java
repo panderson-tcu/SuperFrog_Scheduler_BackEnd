@@ -8,6 +8,8 @@ import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
 
+import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
+import edu.tcu.cs.superfrogscheduler.user.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +23,14 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final AppearanceRepository appearanceRepository;
 
+    private final UserService userService;
 
 
-    public DBDataInitializer(SuperFrogStudentRepository studentRepositoryRepository, AppearanceRepository appearanceRepository) {
+
+    public DBDataInitializer(SuperFrogStudentRepository studentRepositoryRepository, AppearanceRepository appearanceRepository, UserService userService) {
         this.studentRepositoryRepository = studentRepositoryRepository;
         this.appearanceRepository = appearanceRepository;
+        this.userService = userService;
     }
 
 
@@ -122,11 +127,35 @@ public class DBDataInitializer implements CommandLineRunner {
 
         appearanceRepository.save(a1);
 
+        //admin = spirit director
+        //user = customers
+        //student = superfrogstudents
+
+        SchedulerUser u1 = new SchedulerUser();
+        u1.setId(1);
+        u1.setUsername("john");
+        u1.setPassword("123456");
+        u1.setEnabled(true);
+        u1.setRoles("admin user");
+
+        SchedulerUser u2 = new SchedulerUser();
+        u2.setId(2);
+        u2.setUsername("eric");
+        u2.setPassword("654321");
+        u2.setEnabled(true);
+        u2.setRoles("user");
 
 
+        SchedulerUser u3 = new SchedulerUser();
+        u3.setId(3);
+        u3.setUsername("tom");
+        u3.setPassword("qwerty");
+        u3.setEnabled(false);
+        u3.setRoles("user");
 
-
-
+        this.userService.save(u1);
+        this.userService.save(u2);
+        this.userService.save(u3);
 
 
 
