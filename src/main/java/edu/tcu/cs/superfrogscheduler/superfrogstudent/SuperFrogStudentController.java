@@ -87,8 +87,8 @@ public class SuperFrogStudentController {
 
         //how to merge studentDto and appearanceDtos together and respond all at once??
         Map<String, Object> response = new HashMap<>();
-        response.put("super frog student", studentDto);
-        response.put("appearances: ", appearanceDtos);
+        response.put("super-frog-student", studentDto);
+        response.put("appearances", appearanceDtos);
         return new Result(true, StatusCode.SUCCESS, "Find One Success", response);
     }
 

@@ -10,6 +10,7 @@ public class AppearanceToAppearanceDtoConverter {
         AppearanceDto appearanceRequestDto = new AppearanceDto(
 
                 //Customer information
+                source.getId(),
                 source.getC_firstName(),
                 source.getC_lastName(),
                 source.getC_phone(),
