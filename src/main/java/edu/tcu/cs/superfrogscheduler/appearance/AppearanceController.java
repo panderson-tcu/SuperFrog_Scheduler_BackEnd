@@ -59,6 +59,15 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
     }
 
+    //Create a new appearance
 
+    @PostMapping
+    public Result addAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+        // Convert appearanceDto to appearance
+        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+        return new Result(true, StatusCode.SUCCESS, "ADD Success", savedAppearanceDto);
+    }
 
 }

@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Appearance implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
 
     //Customer information

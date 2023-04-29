@@ -132,7 +132,9 @@ public class AppearanceService {
     }
 
 
-
-
+    //UC 1: Customer can create a superfrog appearance request
+    public Appearance save(Appearance newAppearance){
+        return this.appearanceRepository.save(newAppearance);
+    }
 
 }
