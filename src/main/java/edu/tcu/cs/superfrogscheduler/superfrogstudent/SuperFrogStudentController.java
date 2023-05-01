@@ -101,6 +101,7 @@ public class SuperFrogStudentController {
         response.put("completed_appearances", completedAppearanceDtos);
         response.put("assigned_appearances", assignedAppearancesDtos);
         return new Result(true, StatusCode.SUCCESS, "Found account success!", response);
+
     }
 
 

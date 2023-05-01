@@ -12,7 +12,6 @@ public class AppearanceDtoToAppearanceConverter {
         Appearance appearanceRequest = new Appearance();
 
         //Customer information
-        appearanceRequest.setId(source.E_id());
         appearanceRequest.setC_firstName(source.C_firstName());
         appearanceRequest.setC_lastName(source.C_lastName());
         appearanceRequest.setC_phone(source.C_phone());
