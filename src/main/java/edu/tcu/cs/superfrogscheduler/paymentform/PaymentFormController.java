@@ -22,9 +22,9 @@ public class PaymentFormController {
     public Result generatePaymentForms(@RequestBody RequestIds requestIds) {
         List<Integer> selectedIds = requestIds.getRequestIds();
 
-        Period paymentPeriod = requestIds.getPaymentPeriod();
+        Period periodRange = requestIds.getPeriodRange();
 
-        List<PaymentForm> paymentForms = this.paymentService.generatePaymentForms(selectedIds, paymentPeriod);
+        List<PaymentForm> paymentForms = this.paymentService.generatePaymentForms(selectedIds, periodRange);
 
         return new Result(true, StatusCode.SUCCESS, "Payment forms are generated successfully.", paymentForms);
     }
