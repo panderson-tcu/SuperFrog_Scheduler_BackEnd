@@ -94,6 +94,31 @@ public class SuperFrogStudentController {
 
 
 
+    @PutMapping("/{SFS_id}")
+    public Result updatedStudentProfile(@PathVariable Integer SFS_id, @Valid @RequestBody SuperFrogStudentDto studentDto) {
+        SuperFrogStudent update = this.superFrogStudentDtoToSFSConverter.convert(studentDto);
+        SuperFrogStudent updatedStudentProfile = this.studentService.update(SFS_id, update);
+        SuperFrogStudentDto updatedStudentProfileDto = this.sfsToSuperFrogStudentDtoConverter.convert(updatedStudentProfile);
+
+        return new Result(true, StatusCode.SUCCESS, "Update Success", updatedStudentProfileDto);
+    }
+
+    @PutMapping("/{SFS_id}/appearance/{Id}")
+    public Result assignAppearance(@PathVariable Integer SFS_id, @PathVariable Integer Id) {
+        this.studentService.assignAppearance(SFS_id, Id);
+        return new Result(true, StatusCode.SUCCESS, "Appearance Assignment Success");
+    }
+
+//    @PutMapping("/{SFS_id}/appearance/{E_id}")
+//    public Result unassignAppearance(@PathVariable String SFS_id, @PathVariable String E_id) {
+//        this.studentService.unassignAppearance(SFS_id, E_id);
+//        return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
+//    }
+
+
+
+
+
 
 
 

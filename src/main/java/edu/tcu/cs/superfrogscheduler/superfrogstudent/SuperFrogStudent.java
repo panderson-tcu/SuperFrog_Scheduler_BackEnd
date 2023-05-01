@@ -183,6 +183,24 @@ public class SuperFrogStudent implements Serializable {
     }
 
 
+    public List<Appearance> getAppearance() {
+        return appearances;
+    }
+
+    public void setAppearance(List<Appearance> appearance) {
+        this.appearances = appearances;
+    }
+
+    public void addStudentAppearance(Appearance appearance) {
+        appearance.setStudent(this);
+        this.appearances.add(appearance);
+    }
+
+
+
+
+
+
 
 
 
