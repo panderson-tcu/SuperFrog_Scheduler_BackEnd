@@ -109,11 +109,11 @@ public class SuperFrogStudentController {
         return new Result(true, StatusCode.SUCCESS, "Appearance Assignment Success");
     }
 
-//    @PutMapping("/{SFS_id}/appearance/{E_id}")
-//    public Result unassignAppearance(@PathVariable String SFS_id, @PathVariable String E_id) {
-//        this.studentService.unassignAppearance(SFS_id, E_id);
-//        return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
-//    }
+    @PutMapping("/{SFS_id}/appearance/{E_id}")
+    public Result unassignAppearance(@PathVariable Integer SFS_id, @PathVariable Integer E_id) {
+        this.studentService.unassignAppearance(SFS_id, E_id);
+        return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
+    }
 
 
 
