@@ -30,9 +30,8 @@ public class PerformanceReportService {
         List<Appearance> allAppereancesInRange = this.appearanceRepository
                 .findAppearancesByBeginningTimeBetween(periodRange.getBeginDate().atStartOfDay(), periodRange.getEndDate().atTime(23,59,59));
 
-        //Group the appearances by superfrog student - problem here
+        //Group the appearances by superfrog student
         Map<SuperFrogStudent, List<Appearance>> studentRequestsMap = groupRequestsBySuperFrogStudent(allAppereancesInRange);
-
 
         // For each SuperFrogStudent, generate a performace report, and then collect the performance reports into a list.
         List<PerformanceReport> performanceReports = studentRequestsMap.entrySet().stream()
@@ -40,12 +39,7 @@ public class PerformanceReportService {
                 .collect(Collectors.toList());
 
         // Persist the generated payment forms and then return them.
-        System.out.println(studentRequestsMap.keySet().size());
-        System.out.println(studentRequestsMap.values().size());
-        System.out.println(allAppereancesInRange.size());
-
         return this.performanceReportRepository.saveAll(performanceReports);
-        //return performanceReports;
     }
 
 

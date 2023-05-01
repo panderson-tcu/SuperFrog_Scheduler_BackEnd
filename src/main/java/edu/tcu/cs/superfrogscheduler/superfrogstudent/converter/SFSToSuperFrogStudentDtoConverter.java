@@ -9,7 +9,6 @@ public class SFSToSuperFrogStudentDtoConverter {
 
     public SuperFrogStudentDto convert(SuperFrogStudent source) {
         SuperFrogStudentDto studentDto = new SuperFrogStudentDto(
-                source.getSFS_id(),
                 source.getFirstName(),
                 source.getLastName(),
                 source.getPhone(),
