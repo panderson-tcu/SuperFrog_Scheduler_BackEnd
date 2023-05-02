@@ -7,16 +7,16 @@ import java.util.List;
 public class RequestIds {
     private List<Integer> requestIds;
 
-    private Period paymentPeriod;
+    private Period periodRange;
 
 
     public RequestIds() {
 
     }
 
-    public RequestIds(List<Integer> requestIds, Period paymentPeriod) {
+    public RequestIds(List<Integer> requestIds, Period periodRange) {
         this.requestIds = requestIds;
-        this.paymentPeriod = paymentPeriod;
+        this.periodRange = periodRange;
     }
 
     public List<Integer> getRequestIds() {
@@ -27,11 +27,11 @@ public class RequestIds {
         this.requestIds = requestIds;
     }
 
-    public Period getPaymentPeriod() {
-        return paymentPeriod;
+    public Period getPeriodRange() {
+        return periodRange;
     }
 
-    public void setPaymentPeriod(Period paymentPeriod) {
-        this.paymentPeriod = paymentPeriod;
+    public void setPeriodRange(Period periodRange) {
+        this.periodRange = periodRange;
     }
 }

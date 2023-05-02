@@ -178,10 +178,10 @@ public class SuperFrogStudent implements Serializable {
 
     public PerformanceReport generatePerformanceReport(List<Appearance> completedRequests, Period periodRange){
         //this should be the number of completed appearances within the period range
+        //we have not filtered out the range of dates, and the status
         Integer numberOfCompletedAppearances = completedRequests.size();
         return new PerformanceReport(this.firstName, this.lastName, periodRange, numberOfCompletedAppearances);
     }
-
 
     public List<Appearance> getAppearance() {
         return appearances;
@@ -195,16 +195,6 @@ public class SuperFrogStudent implements Serializable {
         appearance.setStudent(this);
         this.appearances.add(appearance);
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

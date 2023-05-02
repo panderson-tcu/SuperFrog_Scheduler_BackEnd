@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Appearance implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
 
     //Customer information
@@ -31,6 +32,8 @@ public class Appearance implements Serializable{
 //Event information
 
     private String eventTitle;
+
+
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
