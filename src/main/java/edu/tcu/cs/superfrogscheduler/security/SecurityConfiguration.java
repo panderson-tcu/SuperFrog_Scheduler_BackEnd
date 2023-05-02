@@ -91,6 +91,9 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, this.baseUrl + "/performance-reports").permitAll()
                         .requestMatchers(HttpMethod.GET, this.baseUrl +"/performance-reports/export/pdf").permitAll()
 
+                        //for logging in
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/users/login").permitAll()
+
 
 
 

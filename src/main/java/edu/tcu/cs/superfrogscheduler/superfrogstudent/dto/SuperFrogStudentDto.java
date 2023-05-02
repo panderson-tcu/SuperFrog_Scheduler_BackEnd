@@ -6,6 +6,8 @@ import java.util.List;
 
 public record SuperFrogStudentDto(
 
+                            Integer id,
+
                            String firstName,
                            String lastName,
                            String phoneNumber,
