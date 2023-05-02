@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -25,6 +26,16 @@ public class AppearanceService {
     public List<Appearance> getAppearancesByStudentId(Integer SFS_id){
         return this.appearanceRepository.findAppearancesByAssignedStudentSFSid(SFS_id);
     }
+
+    public List<Appearance> getCompletedAppearancesByStudentId(Integer SFS_id){
+        return this.appearanceRepository.findAppearancesByAssignedStudentSFSidAndStatusIs(SFS_id, AppearanceStatus.COMPLETED);
+    }
+
+    public List<Appearance> getAssignedAppearancesByStudentId(Integer SFS_id){
+        return this.appearanceRepository.findAppearancesByAssignedStudentSFSidAndStatusIs(SFS_id, AppearanceStatus.ASSIGNED);
+    }
+
+
 
     //UC 2: Customer edits an existing appearance request based on ID
     public Appearance update(Integer E_id, Appearance updatedAppearanceRequest) {

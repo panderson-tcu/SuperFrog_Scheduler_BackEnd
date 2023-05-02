@@ -1,7 +1,9 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
+import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
+import edu.tcu.cs.superfrogscheduler.appearance.AppearanceStatus;
 import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearanceDtoConverter;
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.converter.SFSToSuperFrogStudentDtoConverter;
@@ -32,7 +34,8 @@ public class SuperFrogStudentController {
 
 
 
-    public SuperFrogStudentController(SuperFrogStudentService studentService, SuperFrogStudentRepository studentRepository, SuperFrogStudentRepository studentRepository1, SuperFrogStudentDtoToSFSConverter superFrogStudentDtoToSFSConverter, SFSToSuperFrogStudentDtoConverter sfsToSuperFrogStudentDtoConverter, SuperFrogStudentsSpecifications superFrogStudentsSpecifications, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter, AppearanceService appearanceService) {
+
+    public SuperFrogStudentController(SuperFrogStudentService studentService, SuperFrogStudentRepository studentRepository, SuperFrogStudentRepository studentRepository1, SuperFrogStudentDtoToSFSConverter superFrogStudentDtoToSFSConverter, SFSToSuperFrogStudentDtoConverter sfsToSuperFrogStudentDtoConverter, SuperFrogStudentsSpecifications superFrogStudentsSpecifications, AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter, AppearanceService appearanceService, AppearanceRepository appearanceRepository) {
         this.studentService = studentService;
         this.superFrogStudentDtoToSFSConverter = superFrogStudentDtoToSFSConverter;
         this.sfsToSuperFrogStudentDtoConverter = sfsToSuperFrogStudentDtoConverter;
@@ -78,19 +81,29 @@ public class SuperFrogStudentController {
         SuperFrogStudent student = this.studentService.findById(SFS_id);
         SuperFrogStudentDto studentDto = this.sfsToSuperFrogStudentDtoConverter.convert(student);
 
-        List<Appearance> appearances = this.appearanceService.getAppearancesByStudentId(SFS_id);
 
-        List<AppearanceDto> appearanceDtos = appearances
+        List<Appearance> completedAppearances = this.appearanceService.getCompletedAppearancesByStudentId(SFS_id);
+
+        List<AppearanceDto> completedAppearanceDtos = completedAppearances
+                .stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)
+                .toList();
+
+        List<Appearance> assignedAppearances = this.appearanceService.getAssignedAppearancesByStudentId(SFS_id);
+        List<AppearanceDto> assignedAppearancesDtos = assignedAppearances
                 .stream()
                 .map(this.appearanceToAppearanceDtoConverter::convert)
                 .toList();
 
         //how to merge studentDto and appearanceDtos together and respond all at once??
         Map<String, Object> response = new HashMap<>();
-        response.put("super frog student", studentDto);
-        response.put("appearances: ", appearanceDtos);
-        return new Result(true, StatusCode.SUCCESS, "Find One Success", response);
+        response.put("super-frog-student", studentDto);
+        response.put("completed_appearances", completedAppearanceDtos);
+        response.put("assigned_appearances", assignedAppearancesDtos);
+        return new Result(true, StatusCode.SUCCESS, "Found account success!", response);
     }
+
+
 
 
 
