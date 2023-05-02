@@ -1,2 +1,4 @@
-package edu.tcu.cs.superfrogscheduler.performancereport;public class PerformanceReportPDFExporter {
+package edu.tcu.cs.superfrogscheduler.performancereport;
+
+public class PerformanceReportPDFExporter {
 }
