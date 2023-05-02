@@ -43,10 +43,10 @@ public class PerformanceReportService {
                 .findAppearancesByBeginningTimeBetween(periodRange.getBeginDate().atStartOfDay(), periodRange.getEndDate().atTime(23,59,59));
 
         //Group the appearances by superfrog student
-        Map<SuperFrogStudent, List<Appearance>> studentRequestsMap = groupRequestsBySuperFrogStudent(allAppereancesInRange);
+        Map<SuperFrogStudent, List<Appearance>> studentRequestMap = groupRequestsBySuperFrogStudent(allAppereancesInRange);
 
         // For each SuperFrogStudent, generate a performace report, and then collect the performance reports into a list.
-        List<PerformanceReport> performanceReports = studentRequestsMap.entrySet().stream()
+        List<PerformanceReport> performanceReports = studentRequestMap.entrySet().stream()
                 .map(entry -> entry.getKey().generatePerformanceReport(entry.getValue(), periodRange))
                 .collect(Collectors.toList());
 

@@ -65,6 +65,17 @@ public class AppearanceController {
     }
 
 
+    //UC 1: Customer requests a SuperFrog appearance
+    @PostMapping
+    public Result addAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+        // Convert artifactDto to artifact
+        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+        return new Result(true, StatusCode.SUCCESS, "Add Success", savedAppearanceDto) ;
+    }
+
+
 
 
 }

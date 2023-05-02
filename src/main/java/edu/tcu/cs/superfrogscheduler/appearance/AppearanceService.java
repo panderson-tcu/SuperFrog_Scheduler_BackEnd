@@ -37,6 +37,13 @@ public class AppearanceService {
 
 
 
+    //UC 1: Customer requests a SuperFrog appearance
+    public Appearance save(Appearance newAppearance) {
+        return this.appearanceRepository.save(newAppearance);
+    }
+
+
+
     //UC 2: Customer edits an existing appearance request based on ID
     public Appearance update(Integer E_id, Appearance updatedAppearanceRequest) {
         return this.appearanceRepository.findById(E_id)
