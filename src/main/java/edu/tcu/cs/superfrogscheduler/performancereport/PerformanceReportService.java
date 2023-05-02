@@ -38,6 +38,14 @@ public class PerformanceReportService {
         Map<SuperFrogStudent, List<Appearance>> studentRequestsMap = groupRequestsBySuperFrogStudent(selectedRequests);
 
         // For each SuperFrogStudent, generate a performance report, and then collect the performance reports into a list.
+        //Find all appearances in a periodRange
+        List<Appearance> allAppereancesInRange = this.appearanceRepository
+                .findAppearancesByBeginningTimeBetween(periodRange.getBeginDate().atStartOfDay(), periodRange.getEndDate().atTime(23,59,59));
+
+        //Group the appearances by superfrog student
+        Map<SuperFrogStudent, List<Appearance>> studentRequestsMap = groupRequestsBySuperFrogStudent(allAppereancesInRange);
+
+        // For each SuperFrogStudent, generate a performace report, and then collect the performance reports into a list.
         List<PerformanceReport> performanceReports = studentRequestsMap.entrySet().stream()
                 .map(entry -> entry.getKey().generatePerformanceReport(entry.getValue(), periodRange))
                 .collect(Collectors.toList());
