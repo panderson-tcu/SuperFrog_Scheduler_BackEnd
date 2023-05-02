@@ -35,13 +35,13 @@ class AppearanceServiceTest {
     @BeforeEach
     void setUp() {
         Appearance a1 = new Appearance();
-        a1.setE_id("1");
+        a1.setId("1");
         a1.setEventTitle("Boschini Birthday");
         LocalDateTime mockStartTime = null;
-        a1.setStartTime(null);
+        a1.setBeginning_time(null);
         LocalDateTime mockEndTime = null;
-        a1.setEndTime(null);
-        a1.setEventType("Private");
+        a1.setEnding_time(null);
+        a1.setEventType(EventType.PRIVATE);
         a1.setOrganizationName("Boschini Million Dollar Group");
         a1.setEventAddress("2800 S University Dr, Fort Worth, TX 76129");
         a1.setOnCampus(Boolean.FALSE);

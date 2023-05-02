@@ -8,12 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/paymentform/PaymentForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/paymentform/PaymentForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/superfrog-scheduler/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/main/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceServiceTest.java" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +79,51 @@
       <recent name="edu.tcu.cs.superfrogscheduler.appearance" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AppearanceServiceTest.FindAllSuccess">
-    <configuration name="All in superfrog-scheduler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AppearanceControllerTest.testFindAllAppearanceSuccess">
+    <configuration name="AppearanceControllerTest.testFindAllAppearanceSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.appearance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.appearance" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.appearance.AppearanceControllerTest" />
+      <option name="METHOD_NAME" value="testFindAllAppearanceSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppearanceControllerTest.testFindAllAppearancesSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.appearance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.appearance" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.appearance.AppearanceControllerTest" />
+      <option name="METHOD_NAME" value="testFindAllAppearancesSuccess" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppearanceControllerTest.testGetAppearanceByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="superfrog-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.appearance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.appearance" />
+      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.appearance.AppearanceControllerTest" />
+      <option name="METHOD_NAME" value="testGetAppearanceByIdSuccess" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,34 +144,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SuperFrogStudentControllerTest.testFindSFSByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="edu.tcu.cs.superfrogscheduler in superfrog-scheduler" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.*" />
+          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent" />
-      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentControllerTest" />
-      <option name="METHOD_NAME" value="testFindSFSByIdSuccess" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SuperFrogStudentServiceTest.testFindByIdSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="superfrog-scheduler" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent" />
-      <option name="MAIN_CLASS_NAME" value="edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentServiceTest" />
-      <option name="METHOD_NAME" value="testFindByIdSuccess" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="edu.tcu.cs.superfrogscheduler" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,10 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AppearanceControllerTest.testFindAllAppearanceSuccess" />
+        <item itemvalue="JUnit.AppearanceControllerTest.testGetAppearanceByIdSuccess" />
         <item itemvalue="JUnit.AppearanceServiceTest.FindAllSuccess" />
-        <item itemvalue="JUnit.All in superfrog-scheduler" />
-        <item itemvalue="JUnit.SuperFrogStudentControllerTest.testFindSFSByIdSuccess" />
-        <item itemvalue="JUnit.SuperFrogStudentServiceTest.testFindByIdSuccess" />
+        <item itemvalue="JUnit.AppearanceControllerTest.testFindAllAppearancesSuccess" />
+        <item itemvalue="JUnit.edu.tcu.cs.superfrogscheduler in superfrog-scheduler" />
       </list>
     </recent_temporary>
   </component>
@@ -166,8 +188,9 @@
       <workItem from="1681235642437" duration="15186000" />
       <workItem from="1681265076020" duration="432000" />
       <workItem from="1681265519310" duration="721000" />
-      <workItem from="1682358088874" duration="9626000" />
       <workItem from="1682360656467" duration="5141000" />
+      <workItem from="1682996892210" duration="4569000" />
+      <workItem from="1683010052571" duration="6380000" />
     </task>
     <servers />
   </component>
@@ -182,5 +205,20 @@
     <option featureType="com.intellij.configurationType" implementationName="SpringBootApplicationConfigurationType" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/appearance/AppearanceControllerTest.java</url>
+          <line>80</line>
+          <properties class="edu.tcu.cs.superfrogscheduler.appearance.AppearanceControllerTest" method="testGetAppearanceByIdSuccess">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

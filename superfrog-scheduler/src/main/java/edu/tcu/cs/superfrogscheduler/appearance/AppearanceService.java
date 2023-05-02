@@ -1,5 +1,7 @@
 package edu.tcu.cs.superfrogscheduler.appearance;
 
+import edu.tcu.cs.superfrogscheduler.paymentform.dto.RequestIds;
+import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudentRepository;
 import edu.tcu.cs.superfrogscheduler.system.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -13,8 +15,11 @@ public class AppearanceService {
 
     private final AppearanceRepository appearanceRepository;
 
-    public AppearanceService(AppearanceRepository appearanceRepository) {
+    private final SuperFrogStudentRepository studentRepository;
+
+    public AppearanceService(AppearanceRepository appearanceRepository, SuperFrogStudentRepository studentRepository) {
         this.appearanceRepository = appearanceRepository;
+        this.studentRepository = studentRepository;
     }
 
     public Appearance getAppearanceById(String E_id){
@@ -130,5 +135,15 @@ public class AppearanceService {
     public List<Appearance> findAll() {
         return this.appearanceRepository.findAll();
     }
+    /*
+    public List<Appearance> findbyStatus(RequestStatus status) {
+
+    }
+
+    //UC 9
+    public Appearance updateStatus(Integer RequestIds, RequestStatus status) {
+
+    }
+*/
 
 }

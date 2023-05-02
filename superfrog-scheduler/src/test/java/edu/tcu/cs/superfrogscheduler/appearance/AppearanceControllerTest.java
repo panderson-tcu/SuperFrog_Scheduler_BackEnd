@@ -1,5 +1,6 @@
 package edu.tcu.cs.superfrogscheduler.appearance;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
@@ -14,14 +15,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -83,19 +91,23 @@ class AppearanceControllerTest {
 
     }
 
-    @Test
-    void testFindAllAppearancesSuccess() throws Exception {
+
+
+   @Test
+    void testFindAllAppearanceSuccess() throws Exception {
         //Given
         given(this.appearanceService.findAll()).willReturn(this.appearances);
 
-
         //When and Then
-        this.mockMvc.perform(get("api/v1/appearance").accept(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/api/v1/appearances").accept(MediaType.APPLICATION_JSON)) //How did you manage to make work using that URL Template?
                 .andExpect(jsonPath("$.flag").value(true))
                 .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
                 .andExpect(jsonPath("$.message").value("Find All Success"))
-                .andExpect(jsonPath("$.data", Matchers.hasSize(this.appearances.size())))
-                .andExpect(jsonPath("$.data[0].id").value("Find All Success"))
-                .andExpect(jsonPath("$.data[0].name").value("Find All Success"));
+                .andExpect(jsonPath("$.data", Matchers.hasSize(this.appearances.size())));
     }
+
+
+
+
+
 }

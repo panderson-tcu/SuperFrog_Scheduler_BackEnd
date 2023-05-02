@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
 @RequestMapping("api/v1/appearances")
 public class AppearanceController {
     private final AppearanceService appearanceService;
-    private SFSToSuperFrogStudentDtoConverter appearanceToAppearanceDtoConverter;
-
     private final AppearanceDtoToAppearanceConverter appearanceDtoToAppearanceConverter;
 
     private final AppearanceToAppearanceDtoConverter appearanceToAppearanceDtoConverter;
@@ -49,15 +47,19 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
     }
 
-    @GetMapping("api/v1/appearances")
-    public  <AppearanceDto> Result findAllAppearance() {
-            List<Appearance> foundAppearances = this.appearanceService.findAll();
-            //Convert foundAppearance to a list of appearanceDtos
-            List<AppearanceDto> appearanceDtos = foundAppearances.stream()
-                    .map(foundAppearance ->
-                            this.appearanceToAppearanceDtoConverter.convert(foundAppearance))
-                    .collect(Collectors.toList());
 
-            return new Result(true, StatusCode.SUCCESS, "find all success", appearanceDtos);
-    }
+    //UC7
+   @GetMapping()
+   public Result findAllAppearance() {
+       List<Appearance> foundAppearances = this.appearanceService.findAll();
+       //Convert found appearance to a list of appearanceDtos
+       List<AppearanceDto> appearanceDtos = foundAppearances.stream()
+               .map(this.appearanceToAppearanceDtoConverter::convert)/*foundAppearance -> this.appearanceToAppearanceDtoConverter.convert(foundAppearance)*/
+               .collect(Collectors.toList());
+       return new Result(true, StatusCode.SUCCESS, "Find All Success", appearanceDtos);
+   }
+
+
+
+
 }
