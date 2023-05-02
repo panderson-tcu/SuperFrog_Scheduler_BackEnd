@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 
 public record AppearanceDto(
 
-        Integer E_id,
+        //String E_id,
+
         String C_firstName,
 
         String C_lastName,

@@ -4,6 +4,8 @@ import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceDtoToAppeara
 import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearanceDtoConverter;
 
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
+import edu.tcu.cs.superfrogscheduler.superfrogstudent.SuperFrogStudent;
+import edu.tcu.cs.superfrogscheduler.superfrogstudent.dto.SuperFrogStudentDto;
 import edu.tcu.cs.superfrogscheduler.system.Result;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
 import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
@@ -37,20 +39,83 @@ public class AppearanceController {
         this.userService = userService;
     }
 
-    @GetMapping("/{E_id}")
+
+
+    //UC 1: Customer requests a SuperFrog appearance - status: PENDING
+    @PostMapping("/customer")
+    public Result customerAddAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+        // Convert artifactDto to artifact
+        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+        return new Result(true, StatusCode.SUCCESS, "Add Success", savedAppearanceDto) ;
+    }
+
+    //UC 2: Customer edits request details
+    //UC 3: Customer cancels an appearance request -> 'soft-delete' -> Change status to CANCELLED
+    @PutMapping("/customer/{E_id}")
+    public Result customerUpdateAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
+        Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance updatedAppearanceRequest = this.appearanceService.update(E_id, update);
+        AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
+        return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
+    }
+
+
+    //UC 4: Spirit Director approves/ rejects an appearance request
+    //UC 8: Spirit Director edits basic information of a request
+    @PutMapping("/admin/{E_id}")
+    public Result adminUpdateAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
+        Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance updatedAppearanceRequest = this.appearanceService.update(E_id, update);
+        AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
+        return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
+    }
+
+    //UC 12: Customer cancels an appearance request -> 'soft-delete' -> Change status to CANCELLED
+    @PutMapping("/admin/cancel/{E_id}")
+    public Result adminCancelAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
+        Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance updatedAppearanceRequest = this.appearanceService.updateStatus(E_id, update);
+        AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
+        return new Result(true, StatusCode.SUCCESS, "Update status Success", updatedAppearanceRequestDto);
+    }
+
+    //UC 5: Spirit Director requests a SuperFrog for TCU events
+    @PostMapping("/admin")
+    public Result adminAddAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+        // Convert artifactDto to artifact
+        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+        return new Result(true, StatusCode.SUCCESS, "Add Success", savedAppearanceDto) ;
+    }
+
+    //UC 6: Spirit Director/ SuperFrog Student finds appearance requests
+    @PostMapping("/admin/search_requests")
+    public Result searchAppearancesByMainCriteria(@Valid @RequestBody AppearanceDto appearanceDto){
+
+        Appearance appearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+
+        List<Appearance> appearances = this.appearanceService
+                .findAppearanceRequest(appearance.getEventTitle(), appearance.getC_firstName(), appearance.getC_lastName(), appearance.getStatus());
+
+        List<AppearanceDto> appearanceDtos = appearances
+                .stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)
+                .toList();
+
+        return new Result(true, StatusCode.SUCCESS, "Find students success", appearanceDtos);
+    }
+
+    //UC 7: Spirit Director/ SuperFrog Student views an appearance request
+    @GetMapping("/admin/{E_id}")
     public Result getAppearanceByAppearanceId(@PathVariable Integer E_id) {
         Appearance appearance = this.appearanceService.getAppearanceByAppearanceId(E_id);
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceToAppearanceDtoConverter.convert(appearance));
     }
 
-    @PutMapping("/{E_id}")
-    public Result updateAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
-        Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
-        Appearance updatedAppearanceRequest = this.appearanceService.update(E_id, update);
-        AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
 
-        return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
-    }
 
     //Find a list of apperances by student id
     @GetMapping("/findByStudentId/{SFS_id}")
@@ -65,15 +130,16 @@ public class AppearanceController {
     }
 
 
-    //Create a new appearance
+//    //Create a new appearance
+//
+//    @PostMapping
+//    public Result addAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+//        // Convert appearanceDto to appearance
+//        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+//        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+//        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+//        return new Result(true, StatusCode.SUCCESS, "ADD Success", savedAppearanceDto);
+//    }
 
-    @PostMapping
-    public Result addAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
-        // Convert appearanceDto to appearance
-        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
-        Appearance savedAppearance = this.appearanceService.save(newAppearance);
-        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
-        return new Result(true, StatusCode.SUCCESS, "ADD Success", savedAppearanceDto);
-    }
 
 }

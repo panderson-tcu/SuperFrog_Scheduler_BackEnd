@@ -34,6 +34,8 @@ public class Appearance implements Serializable{
     private String eventTitle;
 
 
+
+
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime beginningTime;
 

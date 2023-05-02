@@ -1,4 +1,3 @@
-
 package edu.tcu.cs.superfrogscheduler.dbinitializer;
 
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
@@ -451,3 +450,4 @@ public class DBDataInitializer implements CommandLineRunner {
     }
 
 }
+
