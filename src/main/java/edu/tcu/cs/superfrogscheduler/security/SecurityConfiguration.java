@@ -67,7 +67,33 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/appearances/**").permitAll()
+                        //UC 1: Customer requests an appearance
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/appearances/customer").permitAll()
+                        //UC 2, 3: Customer edits/ cancel an appearance
+                        .requestMatchers(HttpMethod.PUT, this.baseUrl + "/appearances/customer/**").permitAll()
+                        //UC 4: Spirit director approves/ reject an appearance
+                        .requestMatchers(HttpMethod.PUT, this.baseUrl + "/appearances/admin/**").hasAuthority("ROLE_admin")
+                        //UC 5: Spirit director requests a SuperFrog for TCU events
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/appearances/admin").hasAuthority("ROLE_admin")
+                        //UC 6: Spirit director/ SuperFrog Student finds appearance requests
+                        .requestMatchers(HttpMethod.POST, this.baseUrl +"/appearances/admin/**").hasAuthority("ROLE_admin")
+                        //UC 7: Spirit director/ SuperFrog student views an appearance request
+                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/appearances/admin/**").hasAuthority("ROLE_admin")
+
+
+                        //UC 15: Spirit Director finds SuperFrog student
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/students/search_students").permitAll()
+                        //UC 16: Spirit Director views a SuperFrog Student account
+                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/students/**" ).permitAll()
+                        //UC 18: Spirit Director generates TCU Honorarium
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/payment-forms").permitAll()
+                        //UC 19: Spirit Director generates a SuperFrog Students performance report
+                        .requestMatchers(HttpMethod.POST, this.baseUrl + "/performance-reports").permitAll()
+                        .requestMatchers(HttpMethod.GET, this.baseUrl +"/performance-reports/export/pdf").permitAll()
+
+
+
+
                         .requestMatchers(HttpMethod.POST, this.baseUrl + "/appearances").permitAll()
                         .requestMatchers(HttpMethod.GET, this.baseUrl + "/users").hasAuthority("ROLE_admin")
                         .requestMatchers(HttpMethod.GET, this.baseUrl + "/users").hasAuthority("ROLE_admin")
