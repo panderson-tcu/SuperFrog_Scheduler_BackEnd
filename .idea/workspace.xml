@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e5e95b73-ad00-4335-ae46-a761e4564218" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +69,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SuperfrogSchedulerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="superfrog-scheduler" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="edu.tcu.cs.superfrogscheduler.SuperfrogSchedulerApplication" />
@@ -93,6 +106,7 @@
       <workItem from="1682914934745" duration="7925000" />
       <workItem from="1683087663482" duration="119000" />
       <workItem from="1683088272080" duration="670000" />
+      <workItem from="1683089610533" duration="3836000" />
     </task>
     <servers />
   </component>

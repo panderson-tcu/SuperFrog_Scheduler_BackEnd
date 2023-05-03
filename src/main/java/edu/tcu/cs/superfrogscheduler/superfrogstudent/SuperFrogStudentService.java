@@ -3,6 +3,7 @@ package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
 import edu.tcu.cs.superfrogscheduler.system.exception.ObjectNotFoundException;
+import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -110,6 +111,19 @@ public class SuperFrogStudentService {
         this.studentRepository.findById(SFS_id)
                 .orElseThrow(() -> new ObjectNotFoundException("student", SFS_id));
         this.studentRepository.deleteById(SFS_id);
+    }
+
+    // UC 13
+    public SuperFrogStudent save(SuperFrogStudent newArtifact){
+        newArtifact.setSFS_id(newArtifact.getSFS_id());
+        newArtifact.setFirstName(newArtifact.getFirstName());
+        newArtifact.setLastName(newArtifact.getLastName());
+        newArtifact.setPhone(newArtifact.getPhone());
+        newArtifact.setEmail(newArtifact.getEmail());
+        newArtifact.setAddress(newArtifact.getAddress());
+        newArtifact.setInternational(newArtifact.getInternational());
+        newArtifact.setPaymentPreference(newArtifact.getPaymentPreference());
+        return this.studentRepository.save(newArtifact);
     }
 
 }

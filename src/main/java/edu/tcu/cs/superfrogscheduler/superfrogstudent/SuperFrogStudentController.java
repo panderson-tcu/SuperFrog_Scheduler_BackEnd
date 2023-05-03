@@ -10,6 +10,8 @@ import edu.tcu.cs.superfrogscheduler.superfrogstudent.converter.SuperFrogStudent
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.dto.SuperFrogStudentDto;
 import edu.tcu.cs.superfrogscheduler.system.Result;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
+import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
+import edu.tcu.cs.superfrogscheduler.user.dto.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -130,6 +132,15 @@ public class SuperFrogStudentController {
     public Result deleteUser(@PathVariable Integer SFS_id) {
         this.studentService.delete(SFS_id);
         return new Result(true, StatusCode.SUCCESS, "Delete Success");
+    }
+
+    // UC 13
+    @PostMapping
+    public Result addStudent(@Valid @RequestBody SuperFrogStudentDto studentDto){
+        SuperFrogStudent newStudent = this.superFrogStudentDtoToSFSConverter.convert(studentDto);
+        SuperFrogStudent savedStudent = this.studentService.save(newStudent);
+        SuperFrogStudentDto savedStudentDto = this.sfsToSuperFrogStudentDtoConverter.convert(savedStudent);
+        return new Result(true, StatusCode.SUCCESS, "Add Success", savedStudentDto);
     }
 
 
