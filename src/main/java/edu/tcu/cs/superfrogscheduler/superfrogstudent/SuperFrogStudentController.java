@@ -120,7 +120,7 @@ public class SuperFrogStudentController {
     }
 
     @PutMapping("/{SFS_id}/appearance/{E_id}")
-    public Result unassignAppearance(@PathVariable Integer SFS_id, @PathVariable Integer E_id) {
+    public Result unassignedAppearance(@PathVariable Integer SFS_id, @PathVariable Integer E_id) {
         this.studentService.unassignedAppearance(SFS_id, E_id);
         return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
     }
