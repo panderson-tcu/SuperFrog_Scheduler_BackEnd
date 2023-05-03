@@ -11,6 +11,8 @@ public class AppearanceDtoToAppearanceConverter {
     public Appearance convert(AppearanceDto source){
         Appearance appearanceRequest = new Appearance();
 
+        appearanceRequest.setId(source.E_id());
+
         //Customer information
         appearanceRequest.setC_firstName(source.C_firstName());
         appearanceRequest.setC_lastName(source.C_lastName());

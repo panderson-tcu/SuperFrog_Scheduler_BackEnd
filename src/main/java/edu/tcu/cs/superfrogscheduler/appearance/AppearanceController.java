@@ -11,7 +11,7 @@ import edu.tcu.cs.superfrogscheduler.system.StatusCode;
 import edu.tcu.cs.superfrogscheduler.user.SchedulerUser;
 import edu.tcu.cs.superfrogscheduler.user.UserService;
 import jakarta.validation.Valid;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -130,6 +130,16 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
     }
 
+//    //Create a new appearance
+//
+//    @PostMapping
+//    public Result addAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
+//        // Convert appearanceDto to appearance
+//        Appearance newAppearance = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+//        Appearance savedAppearance = this.appearanceService.save(newAppearance);
+//        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
+//        return new Result(true, StatusCode.SUCCESS, "ADD Success", savedAppearanceDto);
+//    }
     @GetMapping("get_all")
     public Result findAllAppearance() {
         List<Appearance> foundAppearances = this.appearanceService.findAll();
@@ -139,8 +149,6 @@ public class AppearanceController {
                 .collect(Collectors.toList());
         return new Result(true, StatusCode.SUCCESS, "Find All Success", appearanceDtos);
     }
-
-
 
 
 
