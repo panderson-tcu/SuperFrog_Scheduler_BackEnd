@@ -98,11 +98,7 @@ class SuperFrogStudentServiceTest {
     void testFindByIdSuccess() {
 
         SuperFrogStudent s1 = new SuperFrogStudent();
-<<<<<<< HEAD:src/test/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentServiceTest.java
         s1.setSFS_id(1);
-=======
-        s1.setSFS_id(1250808601);
->>>>>>> 7034a483a21ef4214055d669106c786686f9600b:superfrog-scheduler/src/test/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentServiceTest.java
         s1.setFirstName("Hiep");
         s1.setLastName("Nguyen");
         s1.setAddress("3145 Cockrell Avenue, DFW, TX 76109");
