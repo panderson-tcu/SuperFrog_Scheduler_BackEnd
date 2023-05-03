@@ -126,4 +126,15 @@ public class SuperFrogStudentService {
         return this.studentRepository.save(newArtifact);
     }
 
+    // UC 11
+    public SuperFrogStudent cancelSignin(Integer SFS_id, SuperFrogStudent updatedStudentRequest) {
+        return this.studentRepository.findById(SFS_id)
+                .map(oldAppearanceRequest -> {
+                    //Update status - protected routing handled on the front-end
+                    oldAppearanceRequest.setAppearance(updatedStudentRequest.getAppearance());
+                    return this.studentRepository.save(oldAppearanceRequest);
+                })
+                .orElseThrow(() -> new ObjectNotFoundException("SFS sign-up", SFS_id));
+    }
+
 }
