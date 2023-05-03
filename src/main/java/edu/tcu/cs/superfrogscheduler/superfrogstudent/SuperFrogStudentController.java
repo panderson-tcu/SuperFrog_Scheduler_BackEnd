@@ -125,15 +125,12 @@ public class SuperFrogStudentController {
         return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
     }
 
-
-
-
-
-
-
-
-
-
+    // UC 14
+    @DeleteMapping("/{SFS_id}")
+    public Result deleteUser(@PathVariable Integer SFS_id) {
+        this.studentService.delete(SFS_id);
+        return new Result(true, StatusCode.SUCCESS, "Delete Success");
+    }
 
 
 
