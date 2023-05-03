@@ -106,7 +106,7 @@ class SuperFrogStudentControllerTest {
     void testFindSFSByMainCriteriaSuccess() throws Exception{
 
         //Given
-        SuperFrogStudentDto studentDto = new SuperFrogStudentDto(
+        SuperFrogStudentDto studentDto = new SuperFrogStudentDto(1,
                 "Hiep",
                 "Nguyen",
                 "(682) 365-5307",

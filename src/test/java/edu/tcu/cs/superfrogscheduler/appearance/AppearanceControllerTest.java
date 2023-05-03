@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
 import edu.tcu.cs.superfrogscheduler.system.StatusCode;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -84,5 +85,22 @@ class AppearanceControllerTest {
 
     }
 
+<<<<<<< HEAD
 
+=======
+  /*  @Test
+    void testFindAllAppearanceSuccess() throws Exception {
+        //Given
+        given(this.appearanceService.findAll()).willReturn(this.appearances);
+
+        //When and Then
+        this.mockMvc.perform(get("/api/v1/appearances").accept(MediaType.APPLICATION_JSON)) //How did you manage to make work using that URL Template?
+                .andExpect(jsonPath("$.flag").value(true))
+                .andExpect(jsonPath("$.code").value(StatusCode.SUCCESS))
+                .andExpect(jsonPath("$.message").value("Find All Success"))
+                .andExpect(jsonPath("$.data", Matchers.hasSize(this.appearances.size())));
+    }
+
+   */
+>>>>>>> main
 }

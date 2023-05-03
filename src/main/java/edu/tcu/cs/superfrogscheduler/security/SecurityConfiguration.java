@@ -79,7 +79,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, this.baseUrl +"/appearances/admin/**").hasAuthority("ROLE_admin")
                         //UC 7: Spirit director/ SuperFrog student views an appearance request
                         .requestMatchers(HttpMethod.GET, this.baseUrl + "/appearances/admin/**").hasAuthority("ROLE_admin")
-
+                        .requestMatchers(HttpMethod.GET, this.baseUrl + "/appearances/**").permitAll()
 
                         //UC 15: Spirit Director finds SuperFrog student
                         .requestMatchers(HttpMethod.POST, this.baseUrl + "/students/search_students").permitAll()

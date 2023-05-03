@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -129,7 +130,6 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
     }
 
-
 //    //Create a new appearance
 //
 //    @PostMapping
@@ -140,6 +140,16 @@ public class AppearanceController {
 //        AppearanceDto savedAppearanceDto = this.appearanceToAppearanceDtoConverter.convert(savedAppearance);
 //        return new Result(true, StatusCode.SUCCESS, "ADD Success", savedAppearanceDto);
 //    }
+    @GetMapping("get_all")
+    public Result findAllAppearance() {
+        List<Appearance> foundAppearances = this.appearanceService.findAll();
+        //Convert found appearance to a list of appearanceDtos
+        List<AppearanceDto> appearanceDtos = foundAppearances.stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)/*foundAppearance -> this.appearanceToAppearanceDtoConverter.convert(foundAppearance)*/
+                .collect(Collectors.toList());
+        return new Result(true, StatusCode.SUCCESS, "Find All Success", appearanceDtos);
+    }
+
 
 
 }
