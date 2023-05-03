@@ -73,7 +73,7 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
     }
 
-    //UC 12: Customer cancels an appearance request -> 'soft-delete' -> Change status to CANCELLED
+    //UC 12: SD cancels an appearance request -> 'soft-delete' -> Change status to CANCELLED
     @PutMapping("/admin/cancel/{E_id}")
     public Result adminCancelAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
         Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
@@ -81,6 +81,7 @@ public class AppearanceController {
         AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
         return new Result(true, StatusCode.SUCCESS, "Update status Success", updatedAppearanceRequestDto);
     }
+
 
     //UC 5: Spirit Director requests a SuperFrog for TCU events
     @PostMapping("/admin")

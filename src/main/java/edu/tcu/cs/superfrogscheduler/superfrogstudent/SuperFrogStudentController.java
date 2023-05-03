@@ -143,7 +143,13 @@ public class SuperFrogStudentController {
         return new Result(true, StatusCode.SUCCESS, "Add Success", savedStudentDto);
     }
 
-
-
+    // UC 11
+    @PutMapping("/admin/cancel/{SFS_id}")
+    public Result adminCancelAppearanceRequest(@PathVariable Integer SFS_id, @Valid @RequestBody SuperFrogStudentDto studentDto) {
+        SuperFrogStudent update = this.superFrogStudentDtoToSFSConverter.convert(studentDto);
+        SuperFrogStudent updatedStudentRequest = this.studentService.cancelSignin(SFS_id, update);
+        SuperFrogStudentDto updatedStudentRequestDto = this.sfsToSuperFrogStudentDtoConverter.convert(updatedStudentRequest);
+        return new Result(true, StatusCode.SUCCESS, "Cancel sign-up succuss", updatedStudentRequestDto);
+    }
 
 }
