@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -72,6 +73,15 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Update Success", updatedAppearanceRequestDto);
     }
 
+    //UC 12: Customer cancels an appearance request -> 'soft-delete' -> Change status to CANCELLED
+    @PutMapping("/admin/cancel/{E_id}")
+    public Result adminCancelAppearanceRequest(@PathVariable Integer E_id, @Valid @RequestBody AppearanceDto appearanceDto) {
+        Appearance update = this.appearanceDtoToAppearanceConverter.convert(appearanceDto);
+        Appearance updatedAppearanceRequest = this.appearanceService.updateStatus(E_id, update);
+        AppearanceDto updatedAppearanceRequestDto = this.appearanceToAppearanceDtoConverter.convert(updatedAppearanceRequest);
+        return new Result(true, StatusCode.SUCCESS, "Update status Success", updatedAppearanceRequestDto);
+    }
+
     //UC 5: Spirit Director requests a SuperFrog for TCU events
     @PostMapping("/admin")
     public Result adminAddAppearance(@Valid @RequestBody AppearanceDto appearanceDto){
@@ -120,7 +130,15 @@ public class AppearanceController {
         return new Result(true, StatusCode.SUCCESS, "Find appearance Success", appearanceDtos);
     }
 
-
+    @GetMapping("get_all")
+    public Result findAllAppearance() {
+        List<Appearance> foundAppearances = this.appearanceService.findAll();
+        //Convert found appearance to a list of appearanceDtos
+        List<AppearanceDto> appearanceDtos = foundAppearances.stream()
+                .map(this.appearanceToAppearanceDtoConverter::convert)/*foundAppearance -> this.appearanceToAppearanceDtoConverter.convert(foundAppearance)*/
+                .collect(Collectors.toList());
+        return new Result(true, StatusCode.SUCCESS, "Find All Success", appearanceDtos);
+    }
 
 
 

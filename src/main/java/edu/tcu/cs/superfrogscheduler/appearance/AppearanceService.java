@@ -76,10 +76,25 @@ public class AppearanceService {
                 .orElseThrow(() -> new ObjectNotFoundException("Apperance Request", E_id));
     }
 
+    //UC 12: Cancel request
+    public Appearance updateStatus(Integer E_id, Appearance updatedAppearanceRequest) {
+        return this.appearanceRepository.findById(E_id)
+                .map(oldAppearanceRequest -> {
+                    //Update status - protected routing handled on the front-end
+                    oldAppearanceRequest.setStatus(updatedAppearanceRequest.getStatus());
+                    return this.appearanceRepository.save(oldAppearanceRequest);
+                })
+                .orElseThrow(() -> new ObjectNotFoundException("Apperance Request", E_id));
+    }
+
     //UC 6: Spirit Director/ Superfrog Students finds appearance requests
     public List<Appearance> findAppearanceRequest(String eventTitle, String C_firstName, String C_lastName, AppearanceStatus status){
         Specification<Appearance> searchSpecification = appearanceSpecifications.appearanceFilters(eventTitle, C_firstName, C_lastName, status);
         return this.appearanceRepository.findAll(searchSpecification);
+    }
+
+    public List<Appearance> findAll() {
+        return this.appearanceRepository.findAll();
     }
 
 
