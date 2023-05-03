@@ -93,6 +93,10 @@ public class AppearanceService {
         return this.appearanceRepository.findAll(searchSpecification);
     }
 
+    public List<Appearance> findAll() {
+        return this.appearanceRepository.findAll();
+    }
+
 
 
 
