@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01cc0920-c639-47e0-bf26-1a81a3980773" name="Changes" comment="">
+    <list default="true" id="e5e95b73-ad00-4335-ae46-a761e4564218" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/tcu/cs/superfrogscheduler/superfrogstudent/SuperFrogStudentServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
