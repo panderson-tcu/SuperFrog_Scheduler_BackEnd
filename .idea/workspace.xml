@@ -25,13 +25,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2P3ox8bl7mOBNi5y8vRYeyaqAC0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -87,7 +83,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="01cc0920-c639-47e0-bf26-1a81a3980773" name="Changes" comment="" />
+      <changelist id="e5e95b73-ad00-4335-ae46-a761e4564218" name="Changes" comment="" />
       <created>1682695370611</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -95,6 +91,8 @@
       <workItem from="1682695372307" duration="3056000" />
       <workItem from="1682811303231" duration="418000" />
       <workItem from="1682914934745" duration="7925000" />
+      <workItem from="1683087663482" duration="119000" />
+      <workItem from="1683088272080" duration="670000" />
     </task>
     <servers />
   </component>

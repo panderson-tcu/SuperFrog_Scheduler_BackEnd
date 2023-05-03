@@ -105,6 +105,11 @@ public class SuperFrogStudentService {
         }
     }
 
- 
+    // UC 14
+    public void delete(Integer SFS_id) {
+        this.studentRepository.findById(SFS_id)
+                .orElseThrow(() -> new ObjectNotFoundException("student", SFS_id));
+        this.studentRepository.deleteById(SFS_id);
+    }
 
 }
