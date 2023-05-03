@@ -1,6 +1,5 @@
 package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 
-
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.EventType;
 import edu.tcu.cs.superfrogscheduler.paymentform.PaymentForm;
@@ -52,11 +51,13 @@ public class SuperFrogStudent implements Serializable {
     @ManyToOne
     private SpiritDirector director;
 
-
-
     public Integer getSFS_id() {
         return SFSid;
     }
+    
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "worker")
+    private List<Appearance> appearance = new ArrayList<>();
+
 
     public void setSFS_id(Integer SFS_id) {
         this.SFSid = SFS_id;

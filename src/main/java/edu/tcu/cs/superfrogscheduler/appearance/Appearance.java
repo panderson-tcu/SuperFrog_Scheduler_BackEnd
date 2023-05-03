@@ -82,6 +82,10 @@ public class Appearance implements Serializable{
     @ManyToOne
     private SuperFrogStudent assignedStudent;
 
+    @ManyToOne
+    private SuperFrogStudent worker;
+
+
     public Appearance() {
     }
 
@@ -221,4 +225,14 @@ public class Appearance implements Serializable{
     public void setStudent(SuperFrogStudent assignedStudent) {
         this.assignedStudent = assignedStudent;
     }
+
+    public SuperFrogStudent getWorker() {
+        return worker;
+    }
+
+    public void setWorker(SuperFrogStudent worker) {
+        this.worker = worker;
+    }
+
+
 }

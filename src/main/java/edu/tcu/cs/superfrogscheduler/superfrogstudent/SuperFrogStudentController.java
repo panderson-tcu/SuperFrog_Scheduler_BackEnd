@@ -3,7 +3,6 @@ package edu.tcu.cs.superfrogscheduler.superfrogstudent;
 import edu.tcu.cs.superfrogscheduler.appearance.Appearance;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceRepository;
 import edu.tcu.cs.superfrogscheduler.appearance.AppearanceService;
-import edu.tcu.cs.superfrogscheduler.appearance.AppearanceStatus;
 import edu.tcu.cs.superfrogscheduler.appearance.converter.AppearanceToAppearanceDtoConverter;
 import edu.tcu.cs.superfrogscheduler.appearance.dto.AppearanceDto;
 import edu.tcu.cs.superfrogscheduler.superfrogstudent.converter.SFSToSuperFrogStudentDtoConverter;
@@ -122,7 +121,7 @@ public class SuperFrogStudentController {
 
     @PutMapping("/{SFS_id}/appearance/{E_id}")
     public Result unassignAppearance(@PathVariable Integer SFS_id, @PathVariable Integer E_id) {
-        this.studentService.unassignAppearance(SFS_id, E_id);
+        this.studentService.unassignedAppearance(SFS_id, E_id);
         return new Result(true, StatusCode.SUCCESS, "Cancel SignUp Success");
     }
 
